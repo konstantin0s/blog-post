@@ -11,7 +11,7 @@ class Navbar extends Component {
 
      render() {
        const loginRegLink = (
-         <ul className="nav-bar">
+        <ul className="navbar-nav">
            <li className="nav-item">
              <Link to="/login" className="nav-link">
                Login
@@ -27,7 +27,7 @@ class Navbar extends Component {
        )
 
        const userLink = (
-        <ul className="nav-bar">
+        <ul className="navbar-nav">
           <li className="nav-item">
             <Link to="/profile" className="nav-link">
               User
@@ -42,15 +42,15 @@ class Navbar extends Component {
        )
        return (
          <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-            <button className="navbar-toggle" type="button" 
+            <button className="navbar-toggler" type="button" 
             data-toggle="collapse" data-target="#navbar1"
             aria-controls="navbar1" aria-expanded="false"
             aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div className="collapse navbar-collapse justify-content-md-center" id="navabar1">
-            <ul className="nav-bar">
+            <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
+            <ul className="navbar-nav">
                <li className="nav-item">
                 <Link to="/" className="nav-link">
                   Home
