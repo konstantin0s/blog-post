@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {login} from './UserFunctions';
+import '../components/css/login.css';
 
 class Login extends Component {
     constructor() {
@@ -44,8 +45,8 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
+            <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center">
                     <div className="col-md-6 mt-5">
                         <form noValidate onSubmit={this.onSubmit}>
                             <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
