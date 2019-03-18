@@ -53,7 +53,7 @@ class Navbar extends Component {
             <ul className="navbar-nav">
                <li className="nav-item">
                 <Link to="/" className="nav-link">
-                  Home
+                 I&#9829; Vlog
                </Link>
                </li>
          </ul>

@@ -5,17 +5,13 @@ class Register extends Component {
     constructor() {
         super()
         this.state = {
-          first_name: '',
+            first_name: '',
             last_name: '',
             email: '',
             password: ''
         }
-        this.onChange = this
-            .onChange
-            .bind(this)
-        this.onSubmit = this
-            .onSubmit
-            .bind(this)
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
 
     onChange(e) {
@@ -35,12 +31,7 @@ class Register extends Component {
         }
 
         register(user).then(res => {
-            if (res) {
-                this
-                    .props
-                    .history
-                    .push('/login')
-            }
+             this.props.history.push('/login')
         })
     }
 

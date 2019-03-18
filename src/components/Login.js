@@ -9,12 +9,8 @@ class Login extends Component {
             email: '',
             password: ''
         }
-        this.onChange = this
-            .onChange
-            .bind(this)
-        this.onSubmit = this
-            .onSubmit
-            .bind(this)
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
 
     onChange(e) {
@@ -33,14 +29,9 @@ class Login extends Component {
 
         login(user).then(res => {
             if (res) {
-                this
-                    .props
-                    .history
-                    .push('/profile')
+                this.props.history.push('/profile')
             }
         })
-
-        // this.setState({[e.target.name]: e.target.value})
     }
 
     render() {
