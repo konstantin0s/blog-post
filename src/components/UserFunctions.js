@@ -25,3 +25,14 @@ export const login = user => {
     console.log(err)
   })
 }
+
+export const articles = newArticle => {
+  return axios.post('/articles', {
+    title: newArticle.title,
+    author: newArticle.author,
+    body: newArticle.body
+  })
+  .then(res => {
+    console.log('Article added!');
+  })
+}

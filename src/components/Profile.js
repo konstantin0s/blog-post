@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import jwt_decode from 'jwt-decode';
+import Article from './Article';
+
 
 class Profile extends Component {
   constructor() {
@@ -8,8 +10,8 @@ class Profile extends Component {
       first_name: '',
       last_name: '',
         email: ''
-    }
 }
+  }
  
 componentDidMount () {
   const token = localStorage.usertoken
@@ -45,6 +47,7 @@ render()
            </tr>
          </tbody>
        </table>
+
      </div>
    )
  }
