@@ -9,6 +9,7 @@ import Profile from './components/Profile';
 import Article from './components/Article';
 import OneArticle from './components/OneArticle'
 import ShowArticles from './components/ShowArticles';
+import EditArticle from './components/EditArticle';
 // import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
                         <Route exact path="/article" component={Article}/>   {/*Add articles form */}
                         <Route exact path="/articles" component={ShowArticles}/>
                         <Route path='/show/:id' component={OneArticle} />  {/*Show a single article */}
+                        <Route path='/edit/:id' component={EditArticle} />
                     </Switch>
                     </div>
                 </div>

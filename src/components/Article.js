@@ -70,7 +70,7 @@ class Article extends Component {
                           </div>
                           <div className="form-group">
                               <label htmlFor="body">
-                                  Body
+                                  Description
                               </label>
                               <textarea
                                   type="text"
