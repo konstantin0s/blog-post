@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {register} from './UserFunctions';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 class Register extends Component {
     constructor() {
@@ -29,9 +30,10 @@ class Register extends Component {
             email: this.state.email,
             password: this.state.password
         }
-
+             
         register(user).then(res => {
              this.props.history.push('/login')
+            //  this.props.getUser(res)
         })
     }
 
@@ -94,6 +96,10 @@ class Register extends Component {
                                 Register
                             </button>
                         </form>
+
+                        <p>Already have account? 
+                       <Link to={"/login"}> Login</Link>
+      </p>
                     </div>
                 </div>
             </div>

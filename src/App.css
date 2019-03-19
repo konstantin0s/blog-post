@@ -5,3 +5,9 @@
 .nav-item a {
   cursor: pointer;
 }
+
+.user {
+  position: relative;
+   left: 800px;
+
+}

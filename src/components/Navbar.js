@@ -1,8 +1,28 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+// import jwt_decode from 'jwt-decode';
 
 class Navbar extends Component {
+//     constructor() {
+//     super()
+//     this.state = {
+//       first_name: '',
+//       last_name: '',
+//         email: ''
+// }
+//   }
+
+//   componentDidMount () {
+//     const token = localStorage.usertoken
+//     const decoded = jwt_decode(token)
+//     this.setState({
+//       first_name: decoded.first_name,
+//       last_name: decoded.last_name,
+//       email: decoded.email
+//     })
+  
+//   }
      logOut(e) {
        e.preventDefault()
        localStorage.removeItem('usertoken')
@@ -29,8 +49,8 @@ class Navbar extends Component {
        const userLink = (
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link to="/profile" className="nav-link">
-              User
+            <Link to="/profile" className="nav-link user">
+              {/* Welcome {this.state.first_name} */}Profile
             </Link>
             </li>
             <li className="nav-item">
