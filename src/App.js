@@ -10,6 +10,7 @@ import Article from './components/Article';
 import OneArticle from './components/OneArticle';
 import ShowArticles from './components/ShowArticles';
 import EditArticle from './components/EditArticle';
+import PrivateRoute from "./components/PrivateRoute"
 // import {Whoops404} from './components/Whoops404';
 // import 'bootstrap/dist/css/bootstrap.css';
 

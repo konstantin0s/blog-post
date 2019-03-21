@@ -34,12 +34,13 @@ class Login extends Component {
          
         login(user).then(res => {
             if (res) {
-                // this.props.loggedIn(true);
+                // this.props.loggedIn({loggedIn: true});
                 this.props.history.push('/profile');
             }
         })
-        // store.set('loggedIn', true);
-
+        .catch((err)=> {
+            this.props.history.push({ pathname: "/login", state: {message: "unauthorized"}})
+        })
     }
 
     render() {
