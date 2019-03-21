@@ -1,16 +1,36 @@
-import React from "react"
+import React from 'react';
 import {Route, Redirect} from "react-router-dom"
+import jwt_decode from 'jwt-decode';
 
-const PrivateRoute = ({ component: Component, loggedIn: Sesame, ...rest }) => {
-    debugger
+
+const checkAuth = () => {
+  const token = localStorage.getItem('usertoken');
+  // const refreshToken = localStorage.getItem('refreshToken');
+  if (!token) {
+    return false;
+  }
+     try {
+      const { exp } = jwt_decode(token);
+        if( exp < new Date().getTime() /1000) {
+          return false;
+        }
+     }   catch (e) {
+
+     }
+
+  return true;
+  }
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+    // debugger
     return (
     <Route {...rest} render={(props) => {
-    debugger    
+    // debugger    
     return    (
-      Sesame
+      checkAuth()
         ? <Component {...props} />
-        : <Redirect to='/login' />  
+        : <Redirect to={{ pathname: '/login'}} />  
     )}} />
   )}
 
-export default PrivateRoute
+export default PrivateRoute;

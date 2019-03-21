@@ -6,11 +6,6 @@ body, html {
   height: 100%;
 }
 
-/* .first {
-  position: relative;
-  top: 100px;
-  width: 100%;
-} */
 
 .landing {
   position: relative;
@@ -23,7 +18,7 @@ body, html {
 .lanImage {
   position: relative;
   top: 40px;
-  background-image: url('https://images.pexels.com/photos/1496183/pexels-photo-1496183.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-image: url('https://images.pexels.com/photos/39013/self-portrait-eyes-face-39013.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
   height: 500px;
   width: 100%;
   background-position: center;

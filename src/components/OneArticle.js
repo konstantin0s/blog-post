@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
-// import Image from './Image';
-// import isLoggedIn from '../helpers/is_logged_in';
+import { Link } from 'react-router-dom';
+
 
 class OneArticle extends Component {
 
@@ -21,10 +20,6 @@ class OneArticle extends Component {
         // withCredentials: true
         console.log(this.state.oneArticle);
       });
-
-      // if (!isLoggedIn()) {
-      //   return <Redirect to="/login" />
-      // }
   }
 
   delete(id){
@@ -40,8 +35,6 @@ class OneArticle extends Component {
     return (
       <div className="container">
         <div className="panel panel-default">
-          {/* <div className="panel-heading">
-          </div> */}
           <div className="panel-body">
             <dl>
               <dt>Title:</dt>
@@ -52,7 +45,7 @@ class OneArticle extends Component {
               <dd>{this.state.oneArticle.body}</dd>
               <dt>Publish Date:</dt>
               <dd>{this.state.oneArticle.date}</dd> 
-              <img className="rounded float-left img-responsive" src={this.state.oneArticle.imageUrl} />
+              <img className="rounded float-left img-responsive" alt="Article" src={this.state.oneArticle.imageUrl} />
              </dl>
             <Link to={`/edit/${this.state.oneArticle._id}`} class="btn btn-success">Edit</Link>&nbsp;
             <button onClick={this.delete.bind(this, this.state.oneArticle._id)} class="btn btn-danger">Delete</button>

@@ -20,6 +20,7 @@ export const login = user => {
   })
   .then(res => {
     localStorage.setItem('usertoken', res.data)
+    // localStorage.setItem('refreshToken', refreshToken)
     return res.data
   })
   .catch(err => {

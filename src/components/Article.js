@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import uuid from 'uuid';
 import {articles} from './UserFunctions';
 import {handleUpload} from './UserFunctions';
-import { Redirect } from 'react-router-dom';
-// import isLoggedIn from '../helpers/is_logged_in';
+
 
 class Article extends Component {
   constructor() {
@@ -19,13 +15,6 @@ class Article extends Component {
       this.onChange = this.onChange.bind(this)
       this.onSubmit = this.onSubmit.bind(this)
   }
-
-//   componentDidMount() {
-//       if (!isLoggedIn()) {
-//         return <Redirect to="/login" />;
-//       }
-//   }
-
 
   onChange(e) {
       this.setState({
@@ -63,10 +52,6 @@ class Article extends Component {
          imageUrl: this.state.imageUrl
       
       }
-
-    //   if (!isLoggedIn()) {
-    //     return <Redirect to="/login" />;
-    //   }
 
       articles(article).then(res => {
            this.props.history.push('/articles')

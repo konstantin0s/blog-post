@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
 import {login} from './UserFunctions';
 import '../components/css/login.css';
-import store from 'store';
 import { Message } from 'semantic-ui-react';
+
+const initialState = {
+    email: '',
+    password: '',
+    emailError: '',
+    passwordError: '',
+    error: false,
+}
 
 class Login extends Component {
     constructor() {
         super()
-        this.state = {
-            email: '',
-            password: '',
-            error: false,
+        this.state = initialState;
 
-        }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
@@ -23,8 +26,35 @@ class Login extends Component {
         })
     }
 
+    validate = () => {
+       let  emailError =  '';
+       let  passwordError = '';
+
+       if (this.state.email.includes('@')) {
+           emailError = 'invalid email';
+       }
+
+       if (!this.state.password) {
+        passwordError = 'password cannot be blank';
+    }
+
+
+       if (emailError || passwordError) {
+           this.setState({ emailError, passwordError });
+           return false;
+       }
+       return true;
+    }
+
     onSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+        const isValid = this.validate();
+        if (isValid) {
+            console.log(this.state); 
+            //clear form
+           this.setState({initialState});
+        }
+
 
         const user = {
             email: this.state.email,
@@ -39,7 +69,7 @@ class Login extends Component {
             }
         })
         .catch((err)=> {
-            this.props.history.push({ pathname: "/login", state: {message: "unauthorized"}})
+            // this.props.history.push({ pathname: "/login", state: {message: "unauthorized"}})
         })
     }
 
@@ -65,6 +95,7 @@ class Login extends Component {
                                     value={this.state.email}
                                     onChange={this.onChange}/>
                             </div>
+                            <div style={{ fontSize: 12, color: "red"}}>{this.state.emailError}</div>
                             <div className="form-group">
                                 <label htmlFor="email">
                                     Password
@@ -77,6 +108,7 @@ class Login extends Component {
                                     value={this.state.password}
                                     onChange={this.onChange}/>
                             </div>
+                            <div style={{ fontSize: 12, color: "red"}}>{this.state.passwordError}</div>
                             <button type="submit" className="btn btn-lg btn-primary btn-block">
                                 Sign in
                             </button>

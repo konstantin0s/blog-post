@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
+import { withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import store from 'store';
-import {logOut} from './UserFunctions';
-// import jwt_decode from 'jwt-decode';
+
 
 class Navbar extends Component {
 //     constructor() {

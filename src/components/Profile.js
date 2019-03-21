@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import { Link, Redirect } from 'react-router-dom';
-// import Article from './Article';
-// import isLoggedIn from '../helpers/is_logged_in';
 import jwt_decode from 'jwt-decode';
 
 
@@ -23,11 +20,6 @@ componentDidMount () {
     last_name: decoded.last_name,
     email: decoded.email
   })
- 
-  // if (!isLoggedIn()) {
-  //   return <Redirect to="/login" />
-  // }
-
 }
 
 render()

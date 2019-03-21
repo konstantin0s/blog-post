@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {register} from './UserFunctions';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 class Register extends Component {
     constructor() {

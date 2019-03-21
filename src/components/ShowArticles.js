@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import jwt_decode from 'jwt-decode';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
-// import isLoggedIn from '../helpers/is_logged_in';
+import { Link } from 'react-router-dom';
+
 
 
 class ShowArticles extends Component {
@@ -19,9 +18,6 @@ class ShowArticles extends Component {
         this.setState({ articles: res.data });
         console.log(this.state.articles);
       });
-      // if (!isLoggedIn()) {
-      //   return <Redirect to="/login" />;
-      // }
   }
 
   render() {
