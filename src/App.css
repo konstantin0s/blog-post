@@ -53,6 +53,8 @@ body, html {
 
 }
 
-.masthead {
-  /* background-image: url('img/home-bg.jpg'); */
+.card-second {
+  position: relative;
+  float: right;
+  top: -358px;
 }
