@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import store from 'store';
+import {logOut} from './UserFunctions';
 // import jwt_decode from 'jwt-decode';
 
 class Navbar extends Component {
@@ -22,14 +25,21 @@ class Navbar extends Component {
 //       email: decoded.email
 //     })
   
-//   }
+ //   }
+
+
      logOut(e) {
-       e.preventDefault()
-       localStorage.removeItem('usertoken')
+       e.preventDefault();
+       axios.post('/logout');
+       localStorage.removeItem('usertoken');
+       store.remove('loggedIn');
+       console.log('you have been logged out. boo!');
        this.props.history.push('/')
+       store.set('loggedIn', false);
      }
 
      render() {
+      
        const loginRegLink = (
         <ul className="navbar-nav">
            <li className="nav-item">
@@ -55,18 +65,19 @@ class Navbar extends Component {
             </li>
             <li className="nav-item">
             <Link to="/article" className="nav-link">
-              Add Article
+              Blog
             </Link>
             </li>
             <li className="nav-item">
             <Link to="/articles" className="nav-link">
-              Show Articles
+              Show Blogs
             </Link>
             </li>
             <li className="nav-item">
-          <a href onClick={this.logOut.bind(this)} className="nav-link">
+         <a href onClick={this.logOut.bind(this)} className="nav-link">
           Logout
-          </a>
+          </a> 
+        
           </li>
         </ul>
        )
@@ -83,7 +94,7 @@ class Navbar extends Component {
             <ul className="navbar-nav">
                <li className="nav-item">
                 <Link to="/" className="nav-link">
-                 I&#9829; Vlog
+                 You&#9829;Dev
                </Link>
                </li>
          </ul>

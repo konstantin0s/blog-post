@@ -2,6 +2,35 @@
   text-align: center;
 }
 
+body, html {
+  height: 100%;
+}
+
+/* .first {
+  position: relative;
+  top: 100px;
+  width: 100%;
+} */
+
+.landing {
+  position: relative;
+  height: 800px;
+  top: 100px;
+  width: 100%;
+
+}
+
+.lanImage {
+  position: relative;
+  top: 40px;
+  background-image: url('https://images.pexels.com/photos/1496183/pexels-photo-1496183.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  height: 500px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .nav-item a {
   cursor: pointer;
 }
@@ -10,4 +39,20 @@
   position: relative;
    left: 800px;
 
+}
+
+.img-responsive {
+  position: relative;
+  height: 40%;
+  width: 70%;
+  top: 100px;
+  left: 100px;
+}
+
+.panel-body {
+
+}
+
+.masthead {
+  /* background-image: url('img/home-bg.jpg'); */
 }

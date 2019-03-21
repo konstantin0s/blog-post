@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+// import isLoggedIn from '../helpers/is_logged_in';
 
 
 class ShowArticles extends Component {
@@ -18,6 +19,9 @@ class ShowArticles extends Component {
         this.setState({ articles: res.data });
         console.log(this.state.articles);
       });
+      // if (!isLoggedIn()) {
+      //   return <Redirect to="/login" />;
+      // }
   }
 
   render() {
@@ -26,7 +30,6 @@ class ShowArticles extends Component {
         <div className="jumbotron mt-5">
         <h1 className="text-center">Articles: </h1>
           <div class="panel-body">
-            <h4><Link to="/article"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Blog</Link></h4>
             <table className="col md-6 mx-auto">
               <thead>
                 <tr>
@@ -39,11 +42,11 @@ class ShowArticles extends Component {
                 {this.state.articles.map(article =>
                   <tr>
                     <td><Link to={`/show/${article._id}`}>{article.title}</Link></td>
-                    {/* <td>{article.body}</td> */}
                     <td>{article.author}</td>
                   </tr>
                 )}
               </tbody>
+              <h4><Link to="/article"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Blog</Link></h4>
             </table>
           </div>
         </div>

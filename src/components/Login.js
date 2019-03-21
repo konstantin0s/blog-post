@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import {login} from './UserFunctions';
 import '../components/css/login.css';
+import store from 'store';
+import { Message } from 'semantic-ui-react';
 
 class Login extends Component {
     constructor() {
         super()
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            error: false,
+
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -26,28 +30,28 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password
         }
-
+        this.setState({ error: false });
+         
         login(user).then(res => {
             if (res) {
                 // this.props.loggedIn(true);
                 this.props.history.push('/profile');
             }
         })
+        // store.set('loggedIn', true);
 
-        // login(!user).then(res => {
-        //     if (res) {
-        //         this.props.history.push('/login');
-        //     }
-        // })
     }
 
     render() {
+        const { error } = this.state;
         return (
             <div className="d-flex justify-content-center">
                 <div className="d-flex justify-content-center">
                     <div className="col-md-6 mt-5">
-                        <form noValidate onSubmit={this.onSubmit}>
+                        <form noValidate error={error} onSubmit={this.onSubmit}>
                             <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                            {error && <Message error={error} 
+                             content="That username/password is incorrect. Try again!"  />}
                             <div className="form-group">
                                 <label htmlFor="email">
                                     Email Address
