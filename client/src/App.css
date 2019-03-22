@@ -17,39 +17,125 @@ body, html {
 
 .lanImage {
   position: relative;
-  top: 40px;
+  top: 100px;
   background-image: url('https://images.pexels.com/photos/39013/self-portrait-eyes-face-39013.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-  height: 500px;
+  height: 699px;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.nav-item a {
+.logo {
+  position: relative;
+ left: -300px;
+ top: 20px;
+}
+
+ul {
+  list-style: none; 
+  display: inline;
+}
+
+li {
+  list-style: none; 
+  display: inline;
+}
+
+
+.nav-item {
   cursor: pointer;
+  list-style: none;
+}
+
+.nav-link:link {
+  cursor: pointer;
+ display: inline;
+ text-decoration: none;
+ padding: 14px 20px;
+ margin-right: 100px;
+}
+
+.navbar-inverse {
+  font-weight: 600;
+}
+
+.logout {
+  position: relative;
+  top: -14px;
 }
 
 .user {
   position: relative;
    left: 800px;
-
 }
+
 
 .img-responsive {
-  position: relative;
-  height: 40%;
-  width: 70%;
-  top: 100px;
-  left: 100px;
+ height: 500px;
+  width: 100%;
 }
 
-.panel-body {
+.oneArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  top: 100px;
+}
 
+.oneArticle h1 {
+  position: relative;
+  top: -50px;
+}
+
+.oneArticle p {
+  position: relative;
+  top: 50px;
+}
+
+.oneArticle span {
+  position: relative;
+  top: 60px;
+}
+
+.edel {
+ position: relative;
+ top: 100px;
 }
 
 .card-second {
   position: relative;
   float: right;
   top: -358px;
+}
+
+.linkz {
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.linkz:link {
+  text-decoration: none;
+}
+
+.editArticle {
+  position: relative;
+  top: 200px;
+}
+
+.showArticles {
+  position: relative;
+  top: 200px;
+}
+
+.blTitle {
+  position: relative;
+  top: -15px;
+}
+
+.badge {
+  position: relative;
+  top: 10px;
+  margin-bottom: 20px;
 }

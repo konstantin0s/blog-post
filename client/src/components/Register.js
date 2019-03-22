@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
 import {register} from './UserFunctions';
 import { Link} from 'react-router-dom';
+import { Message } from 'semantic-ui-react';
+
+const initialState = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: ''
+}
+
 
 class Register extends Component {
     constructor() {
         super()
-        this.state = {
-            first_name: '',
-            last_name: '',
-            email: '',
-            password: ''
-        }
+        this.state = initialState;
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
@@ -21,8 +25,59 @@ class Register extends Component {
         })
     }
 
+    validate = () => {
+        let isError = false;
+        const errors = {};
+       let firstnameError = '';
+       let  lastnameError = '';
+     
+        let  emailError =  '';
+        let  passwordError = '';
+
+        if (!this.state.first_name) {
+            isError = true;
+            firstnameError = 'First name cannot be blank';
+        }
+
+        if (!this.state.last_name) {
+            isError = true;
+            lastnameError = 'First name cannot be blank';
+        }
+ 
+        if (this.state.email.includes('@')) {
+            isError = true;
+            emailError = 'invalid email';
+        }
+ 
+        if (!this.state.password) {
+            isError = true;
+         passwordError = 'password cannot be blank';
+     }
+          if (isError) {
+              this.setState({
+                ...this.state,
+                ...errors
+              });
+          }
+ 
+        if (firstnameError || lastnameError || emailError || passwordError) {
+            this.setState({firstnameError, lastnameError, emailError, passwordError });
+            return false;
+        }
+        // return isError;
+        return true;
+     }
+ 
+
     onSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+
+        const isValid = this.validate();
+        if (isValid) {
+            console.log(this.state); 
+            //clear form
+           this.setState({initialState});
+        }
 
         const user = {
           first_name: this.state.first_name,
@@ -30,20 +85,24 @@ class Register extends Component {
             email: this.state.email,
             password: this.state.password
         }
+
              
         register(user).then(res => {
              this.props.history.push('/login')
-            //  this.props.getUser(res)
+             this.props.getUser(res)
         })
     }
 
     render() {
+        const { error } = this.state;
         return (
             <div className="d-flex justify-content-center">
                <div className="d-flex justify-content-center">
                     <div className="col-md-6 mt-5">
                         <form noValidate onSubmit={this.onSubmit}>
                             <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                            {error && <Message error={error} 
+                             content="That username/password is incorrect. Try again!"  />}
                             <div className="form-group">
                                 <label htmlFor="first_name">
                                     First Name
@@ -56,6 +115,7 @@ class Register extends Component {
                                     value={this.state.first_name}
                                     onChange={this.onChange}/>
                             </div>
+                            <div style={{ fontSize: 12, color: "red"}}>{this.state.firstnameError}</div>
                             <div className="form-group">
                                 <label htmlFor="last_name">
                                     Last Name
@@ -68,6 +128,7 @@ class Register extends Component {
                                     value={this.state.last_name}
                                     onChange={this.onChange}/>
                             </div>
+                            <div style={{ fontSize: 12, color: "red"}}>{this.state.lastnameError}</div>
                             <div className="form-group">
                                 <label htmlFor="email">
                                     Email
@@ -80,6 +141,7 @@ class Register extends Component {
                                     value={this.state.email}
                                     onChange={this.onChange}/>
                             </div>
+                            <div style={{ fontSize: 12, color: "red"}}>{this.state.emailError}</div>
                             <div className="form-group">
                                 <label htmlFor="password">
                                     Password
@@ -92,6 +154,7 @@ class Register extends Component {
                                     value={this.state.password}
                                     onChange={this.onChange}/>
                             </div>
+                            <div style={{ fontSize: 12, color: "red"}}>{this.state.passwordError}</div>
                             <button type="submit" className="btn btn-lg btn-primary btn-block">
                                 Register
                             </button>

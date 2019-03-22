@@ -34,24 +34,20 @@ class OneArticle extends Component {
     // const { OneArticle } = this.state;
     return (
       <div className="container">
-        <div className="panel panel-default">
-          <div className="panel-body">
-            <dl>
-              <dt>Title:</dt>
-              <dd>{this.state.oneArticle.title}</dd>
-              <dt>Author:</dt>
-              <dd>{this.state.oneArticle.author}</dd>
-              <dt>Description:</dt>
-              <dd>{this.state.oneArticle.body}</dd>
-              <dt>Publish Date:</dt>
-              <dd>{this.state.oneArticle.date}</dd> 
-              <img className="rounded float-left img-responsive" alt="Article" src={this.state.oneArticle.imageUrl} />
-             </dl>
-            <Link to={`/edit/${this.state.oneArticle._id}`} class="btn btn-success">Edit</Link>&nbsp;
-            <button onClick={this.delete.bind(this, this.state.oneArticle._id)} class="btn btn-danger">Delete</button>
-          </div> 
-        </div>
-        <h4><Link to="/"><span className="glyphicon glyphicon-th-list" aria-hidden="true"></span> Blog List</Link></h4>
+          <div className="col-md-12 oneArticle">         
+             <h1>{this.state.oneArticle.title}</h1>
+             <img className="rounded float-left img-responsive" alt="Article" src={this.state.oneArticle.imageUrl} />
+             <p>{this.state.oneArticle.body}</p>
+               
+            <span className="badge">Posted {this.state.oneArticle.date}</span><div className="pull-right"><span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>
+            <span className="label label-danger">Danger</span>
+               <div className="edel"> 
+               <Link to={`/edit/${this.state.oneArticle._id}`} class="btn btn-success">Edit</Link>&nbsp;
+               <button onClick={this.delete.bind(this, this.state.oneArticle._id)} class="btn btn-danger">Delete</button>
+               </div>
+           <hr/>
+            </div>   
+            </div>
       </div>
     );
   }

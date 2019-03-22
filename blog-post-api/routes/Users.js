@@ -31,13 +31,20 @@ users.post('/register', (req, res) => {
          created: today
   }
 
+
+  if (!userData) {
+    res.status(400).json({ message: 'Provide username and password' });
+    return;
+  }
+
+
   User.findOne({
     email: req.body.email
   })
   .then(user => {
     if (!user) {
       bcrypt.hash(req.body.password, 10, (err, hash) => {
-        userData.password = hash
+        userData.password = hash;
         User.create(userData)
         .then(user => {
           res.json({status: user.email + ' registered!'})
@@ -104,6 +111,7 @@ users.get('/profile',protect, (req, res) => {
     res.send('error: ' + err)
   })
 })
+
 
 // users.post('/logout', (req, res, next) => {
 //   // req.logout() is defined by passport
