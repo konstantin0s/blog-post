@@ -4,6 +4,7 @@
 
 body, html {
   height: 100%;
+ overflow-x: hidden;
 }
 
 
@@ -29,12 +30,17 @@ body, html {
 .logo {
   position: relative;
  left: -300px;
- top: 20px;
+ top: 10px;
 }
 
 ul {
   list-style: none; 
   display: inline;
+}
+
+.navlinks {
+  position: relative;
+  top: -20px;
 }
 
 li {
@@ -53,50 +59,37 @@ li {
  display: inline;
  text-decoration: none;
  padding: 14px 20px;
- margin-right: 100px;
+ margin-right: 100px; 
 }
 
 .navbar-inverse {
   font-weight: 600;
+  font-size: 22px;
+  position: relative;
+  top: 0px;
+  height: 30px;
 }
 
 .logout {
   position: relative;
-  top: -14px;
+  top: -9px;
+ left: 550px;
 }
 
 .user {
   position: relative;
-   left: 800px;
+   left: 1000px;
 }
+
+.logIn, .regIster {
+  position: relative;
+  left: 1100px;
+} 
 
 
 .img-responsive {
  height: 500px;
   width: 100%;
-}
-
-.oneArticle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  top: 100px;
-}
-
-.oneArticle h1 {
-  position: relative;
-  top: -50px;
-}
-
-.oneArticle p {
-  position: relative;
-  top: 50px;
-}
-
-.oneArticle span {
-  position: relative;
-  top: 60px;
 }
 
 .edel {
@@ -110,32 +103,7 @@ li {
   top: -358px;
 }
 
-.linkz {
-  font-weight: 400;
-  font-size: 30px;
-}
-
-.linkz:link {
-  text-decoration: none;
-}
-
 .editArticle {
   position: relative;
   top: 200px;
-}
-
-.showArticles {
-  position: relative;
-  top: 200px;
-}
-
-.blTitle {
-  position: relative;
-  top: -15px;
-}
-
-.badge {
-  position: relative;
-  top: 10px;
-  margin-bottom: 20px;
 }
