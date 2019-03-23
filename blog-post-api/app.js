@@ -63,7 +63,7 @@ app.use(cors({
 
   const protect = (req, res, next)=> {
     debugger
-    if(req.session.user) {
+    if(req.session.currentUser) {
       next()
     } else {
       res.status(403).json({message: "Unauthorized"})

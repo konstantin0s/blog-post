@@ -122,9 +122,9 @@ users.get('/profile', protect, (req, res) => {
 //   res.status(403).json({ message: 'Unauthorized' });
 // });
 
-users.post("/logout", (req, res, next) => {
+users.get("/logout", protect, (req, res, next) => {
   res.clearCookie("name");
-  req.session.destroy((err) => {
+  req.session.currentUser.destroy((err) => {
   // req.logout();
   res.status(200).json({ message: 'Log out success!' });
   });

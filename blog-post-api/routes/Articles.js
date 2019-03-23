@@ -6,6 +6,7 @@ require("dotenv").config();
 //bring in models
 const Article = require('../models/Article');
 
+
 //@route Get Articles
 //@desc All Articles
 //@access Public
@@ -52,6 +53,7 @@ router.post('/', (req, res) => {
     author: req.body.author,
     body: req.body.body,
     imageUrl: req.body.imageUrl,
+    // owner: req.user._id,  -> watch out with this(causes problems when addding new article)
     created: today
   });
 

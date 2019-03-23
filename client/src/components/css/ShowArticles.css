@@ -1,0 +1,36 @@
+
+.showArticles {
+  position: relative;
+  top: 200px;
+}
+
+
+span {
+  position: relative;
+  top: -50px;
+}
+
+.blTitle {
+  position: relative;
+  top: -15px;
+}
+
+.badge {
+  position: relative;
+  top: -50px;
+  left: -150px;
+  margin-bottom: 40px;
+}
+
+.col-md-12 p {
+  margin: 100px 0;
+}
+
+.linkz {
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.linkz:link {
+  text-decoration: none;
+}

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema
 
 //Article schema
-const articleSchema = mongoose.Schema({
+const articleSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -17,6 +18,7 @@ const articleSchema = mongoose.Schema({
   imageUrl: { type: String,
      required: true,
   },
+  owner: {type: Schema.Types.ObjectId, ref: 'User'},
   date: {
     type: Date,
     default: Date.now

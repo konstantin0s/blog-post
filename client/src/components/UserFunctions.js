@@ -1,3 +1,68 @@
+// import axios from 'axios';
+// import store from 'store';
+
+// export const register = newUser => {
+//   return axios.post('users/register', {
+//     first_name: newUser.first_name,
+//     last_name: newUser.last_name,
+//     email: newUser.email,
+//     password: newUser.password,
+       
+//   })
+//   .then(res => {
+//     console.log('Registered!, now what? I am from UserFunctions');
+//   })
+// }
+
+// export const login = user => {
+//   return axios.post('users/login', {
+//     email: user.email,
+//     password: user.password
+//   })
+//   .then(res => {
+//     localStorage.setItem('usertoken', res.data)
+//     console.log(res.data);
+//     // localStorage.setItem('refreshToken', res.data)
+//     return res.data
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
+// }
+
+// export const articles = newArticle => {
+//   return axios.post('/articles', {
+//     title: newArticle.title,
+//     author: newArticle.author,
+//     body: newArticle.body,
+//     imageUrl: newArticle.imageUrl
+//   })
+//   .then(res => {
+//     console.log('Article added!');
+//   })
+// }
+
+
+// export const handleUpload = theFile => {
+
+//     console.log('file in service: ', theFile)
+//   return  axios.post('/upload', theFile)
+//       .then(res => res.data)
+//       .catch(err => {
+//         console.log(err)
+//       })
+// }
+
+// export const logOut = () => (e) => {
+//   e.preventDefault();
+//   axios.post('/logout');
+//   localStorage.removeItem('usertoken');
+//   store.remove('loggedIn');
+//   console.log('you have been logged out. boo!');
+// };
+
+
+
 import axios from 'axios';
 import store from 'store';
 
@@ -6,7 +71,8 @@ export const register = newUser => {
     first_name: newUser.first_name,
     last_name: newUser.last_name,
     email: newUser.email,
-    password: newUser.password
+    password: newUser.password,
+       
   })
   .then(res => {
     console.log('Registered!, now what? I am from UserFunctions');
@@ -19,8 +85,9 @@ export const login = user => {
     password: user.password
   })
   .then(res => {
-    localStorage.setItem('usertoken', res.data)
-    // localStorage.setItem('refreshToken', refreshToken)
+    localStorage.setItem('usertoken', res.data, { header: true })
+    console.log(res.data);
+    // localStorage.setItem('refreshToken', res.data)
     return res.data
   })
   .catch(err => {
@@ -33,7 +100,7 @@ export const articles = newArticle => {
     title: newArticle.title,
     author: newArticle.author,
     body: newArticle.body,
-    imageUrl: newArticle.imageUrl,
+    imageUrl: newArticle.imageUrl
   })
   .then(res => {
     console.log('Article added!');
@@ -44,7 +111,7 @@ export const articles = newArticle => {
 export const handleUpload = theFile => {
 
     console.log('file in service: ', theFile)
-  return  axios.post('/upload', theFile)
+  return  axios.post('/upload', theFile,  {withCredentials: true})
       .then(res => res.data)
       .catch(err => {
         console.log(err)
@@ -53,7 +120,7 @@ export const handleUpload = theFile => {
 
 export const logOut = () => (e) => {
   e.preventDefault();
-  axios.post('/logout');
+  axios.get('/logout');
   localStorage.removeItem('usertoken');
   store.remove('loggedIn');
   console.log('you have been logged out. boo!');

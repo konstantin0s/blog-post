@@ -12,8 +12,8 @@ const initialState = {
 }
 
 class Login extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = initialState;
 
         this.onChange = this.onChange.bind(this)
@@ -30,7 +30,7 @@ class Login extends Component {
        let  emailError =  '';
        let  passwordError = '';
 
-       if (this.state.email.includes('@')) {
+       if (!this.state.email.includes('@')) {
            emailError = 'invalid email';
        }
 
@@ -51,6 +51,7 @@ class Login extends Component {
         const isValid = this.validate();
         if (isValid) {
             console.log(this.state); 
+            this.props.history.push('/');
             //clear form
            this.setState({initialState});
         }
@@ -64,12 +65,13 @@ class Login extends Component {
          
         login(user).then(res => {
             if (res) {
+                // this.props.getUser(res);
                 // this.props.loggedIn({loggedIn: true});
                 this.props.history.push('/profile');
             }
         })
         .catch((err)=> {
-            // this.props.history.push({ pathname: "/login", state: {message: "unauthorized"}})
+            this.props.history.push({ pathname: "/login", state: {message: "unauthorized"}})
         })
     }
 
