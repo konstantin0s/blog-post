@@ -11,7 +11,7 @@ class Profile extends Component {
       first_name: '',
       last_name: '',
       email: '',
-			//  imageUrl: '',
+			 imageUrl: '',
       date: ''
     }
   }
@@ -19,12 +19,12 @@ class Profile extends Component {
 componentDidMount () {
   const token = localStorage.usertoken
 	console.log(localStorage);
-  const decoded = jwt_decode(token, { header: true })
+  const decoded = jwt_decode(token)
   this.setState({
     first_name: decoded.first_name,
     last_name: decoded.last_name,
     email: decoded.email,
-		// imageUrl: decoded.imageUrl,
+		imageUrl: decoded.imageUrl,
     date: decoded.date
   })
 }
@@ -46,7 +46,7 @@ render()
           {this.state.first_name} {this.state.last_name}
 					</div>
 					<div className="profile-usertitle-job">
-						Joined at: {this.state.date}
+						Joined at: <h4>{this.state.date}</h4>
 					</div>
 				</div>
 		

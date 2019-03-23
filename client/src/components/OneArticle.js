@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './css/OneArticle.css';
-// import AuthorizeOnly from '../components/AuthorizeOnly';
+import AuthorizeOnly from '../components/AuthorizeOnly';
 // import {login} from './UserFunctions';
 
 class OneArticle extends Component {
@@ -20,7 +20,8 @@ class OneArticle extends Component {
         this.setState({ oneArticle: res.data.article })
         console.log(this.state.oneArticle);
       });
-      // this.state = { loggedInUser: true };
+      this.state = { loggedInUser: true };
+
   }
 
   delete(id){
@@ -31,9 +32,9 @@ class OneArticle extends Component {
       });
   }
 
-  // loggedInUser =  {
-  //   role:'admin' 
-  // }
+  loggedInUser =  {
+    role:'admin' 
+  }
 
   // ownershipCheck = (article) => {
   //   if(this.props.loggedIn && article.owner == this.props.loggedIn._id){
@@ -45,7 +46,7 @@ class OneArticle extends Component {
   //     )
   //   } 
   // }
-
+  
   render() {
     // const { OneArticle } = this.state;
     return (
@@ -57,10 +58,17 @@ class OneArticle extends Component {
              <h4>Written by: <div className="author">{this.state.oneArticle.author}</div></h4>
              <div>
 
-             {/* <AuthorizeOnly allowedRoles={['admin']} user={loggedInUser}>
+        
+               {/* <div>
+            
+               <Link to={`/edit/${this.state.oneArticle._id}`} class="btn btn-success">Edit</Link>&nbsp;
+            <button onClick={this.delete.bind(this, this.state.oneArticle._id)} class="btn btn-danger">Delete</button>
+               </div> */}
+    
+             <AuthorizeOnly allowedRoles={['admin']} user={this.loggedInUser}>
              <Link to={`/edit/${this.state.oneArticle._id}`} class="btn btn-success">Edit</Link>&nbsp;
               <button onClick={this.delete.bind(this, this.state.oneArticle._id)} class="btn btn-danger">Delete</button>
-            </AuthorizeOnly> */}
+            </AuthorizeOnly>
       </div>
             <span className="badge post">Posted {this.state.oneArticle.date}</span>
             <div className="pull-right"><span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>

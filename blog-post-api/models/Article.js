@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
+const User = require('./User');
+
 //Article schema
 const articleSchema = new Schema({
   title: {
@@ -18,7 +20,7 @@ const articleSchema = new Schema({
   imageUrl: { type: String,
      required: true,
   },
-  owner: {type: Schema.Types.ObjectId, ref: 'User'},
+  // owner: {type: Schema.Types.ObjectId, ref: 'User'},
   date: {
     type: Date,
     default: Date.now

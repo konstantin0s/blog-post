@@ -5,7 +5,7 @@ require("dotenv").config();
 
 //bring in models
 const Article = require('../models/Article');
-
+const User = require('../models/User');
 
 //@route Get Articles
 //@desc All Articles
@@ -53,11 +53,14 @@ router.post('/', (req, res) => {
     author: req.body.author,
     body: req.body.body,
     imageUrl: req.body.imageUrl,
-    // owner: req.user._id,  -> watch out with this(causes problems when addding new article)
+    // owner: req.user._id, //  -> watch out with this(causes problems when addding new article)
     created: today
   });
 
    newArticle.save().then(article => res.json(article))
+   .catch(err => {
+    res.json(err);
+    })
 });
 
 //Edit single Article
