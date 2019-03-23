@@ -12,7 +12,7 @@ users.use(cors());
 
 const protect = (req, res, next)=> {
   debugger
-  if(req.session.user) {
+  if(req.session.currentUser) {
     next()
   } else {
     res.status(403).json({message: "Unauthorized"})
@@ -62,7 +62,7 @@ users.post('/login', (req, res) => {
   .then(user => {
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
-        req.session.user = user; // check this if you cannot go to profile page!
+        req.session.currentUser = user; // check this if you cannot go to profile page!
         const payload = {
            _id: user._id,
            first_name: user.first_name,
@@ -87,7 +87,7 @@ users.post('/login', (req, res) => {
   })
 })
 
-users.get('/profile',protect, (req, res) => {
+users.get('/profile', protect, (req, res) => {
   const decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
   User.findOne({
