@@ -30,7 +30,7 @@ class Login extends Component {
        let  emailError =  '';
        let  passwordError = '';
 
-       if (!this.state.email.includes('@')) {
+       if (this.state.email.includes('@')) {
            emailError = 'invalid email';
        }
 
@@ -51,7 +51,6 @@ class Login extends Component {
         const isValid = this.validate();
         if (isValid) {
             console.log(this.state); 
-            this.props.history.push('/');
             //clear form
            this.setState({initialState});
         }
@@ -70,7 +69,7 @@ class Login extends Component {
             }
         })
         .catch((err)=> {
-            this.props.history.push({ pathname: "/login", state: {message: "unauthorized"}})
+            // this.props.history.push({ pathname: "/login", state: {message: "unauthorized"}})
         })
     }
 

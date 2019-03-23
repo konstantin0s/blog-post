@@ -4,7 +4,6 @@
 
 body, html {
   height: 100%;
- overflow-x: hidden;
 }
 
 
@@ -18,92 +17,39 @@ body, html {
 
 .lanImage {
   position: relative;
-  top: 100px;
+  top: 40px;
   background-image: url('https://images.pexels.com/photos/39013/self-portrait-eyes-face-39013.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-  height: 699px;
+  height: 500px;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.logo {
-  position: relative;
- left: -300px;
- top: 10px;
-}
-
-ul {
-  list-style: none; 
-  display: inline;
-}
-
-.navlinks {
-  position: relative;
-  top: -20px;
-}
-
-li {
-  list-style: none; 
-  display: inline;
-}
-
-
-.nav-item {
+.nav-item a {
   cursor: pointer;
-  list-style: none;
-}
-
-.nav-link:link {
-  cursor: pointer;
- display: inline;
- text-decoration: none;
- padding: 14px 20px;
- margin-right: 100px; 
-}
-
-.navbar-inverse {
-  font-weight: 600;
-  font-size: 22px;
-  position: relative;
-  top: 0px;
-  height: 30px;
-}
-
-.logout {
-  position: relative;
-  top: -9px;
- left: 550px;
 }
 
 .user {
   position: relative;
-   left: 1000px;
+   left: 800px;
+
 }
-
-.logIn, .regIster {
-  position: relative;
-  left: 1100px;
-} 
-
 
 .img-responsive {
- height: 500px;
-  width: 100%;
+  position: relative;
+  height: 40%;
+  width: 70%;
+  top: 100px;
+  left: 100px;
 }
 
-.edel {
- position: relative;
- top: 100px;
+.panel-body {
+
 }
 
 .card-second {
   position: relative;
   float: right;
   top: -358px;
-}
-
-.editArticle {
-  position: relative;
-  top: 200px;
 }

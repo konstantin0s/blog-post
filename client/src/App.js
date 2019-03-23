@@ -15,31 +15,18 @@ import {Whoops404} from './components/Whoops404';
 
 
 class App extends Component {
-    constructor(props){
-        super(props)
-        this.state = { loggedInUser: null };
-      }
-    
-      getTheUser= (userObj) => {
-        this.setState({
-          loggedInUser: userObj
-        })
-      }
-    
 
     render() {
         return (
 
             <Router>
                 <div className="App">
-                    {/* <Navbar/> */}
-                    <Navbar userInSession={this.state.loggedInUser} />
+                    <Navbar/>
                     <Route exact path="/" component={Landing}/>
                     <div className="container">
                     <Switch>
                     <Route exact path="/login" render={(props)=> <Login {...props} />} />
-                   {/* <Route exact path="/register" render={(props)=> <Register {...props} />} /> */}
-                   <Route exact path='/register' render={() => <Register getUser={this.getTheUser}/>}/>
+                   <Route exact path="/register" render={(props)=> <Register {...props} />} />
                         <PrivateRoute path="/profile" component={Profile}/>
                         <PrivateRoute path="/article" component={Article}/>   {/*Add articles form */}
                         <PrivateRoute path="/articles" component={ShowArticles}/>

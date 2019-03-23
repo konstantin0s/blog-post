@@ -1,22 +1,11 @@
 import React, {Component} from 'react';
 import { withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-import '../App.css'
 import axios from 'axios';
 import store from 'store';
 
 
 class Navbar extends Component {
-  constructor(props){
-    super(props);
-    this.state = { loggedInUser: null };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({...this.state, loggedInUser: nextProps["userInSession"]})
-  }
-
-    
 //     constructor() {
 //     super()
 //     this.state = {
@@ -49,8 +38,9 @@ class Navbar extends Component {
      }
 
      render() {
+      
        const loginRegLink = (
-        <ul className="navbar-nav mr-auto">
+        <ul className="navbar-nav">
            <li className="nav-item">
              <Link to="/login" className="nav-link">
                Login
@@ -62,10 +52,11 @@ class Navbar extends Component {
              </Link>
            </li>
          </ul>
+
        )
-   
+
        const userLink = (
-        <ul className="nav navbar-nav">
+        <ul className="navbar-nav">
           <li className="nav-item">
             <Link to="/profile" className="nav-link user">
               {/* Welcome {this.state.first_name} */}Profile
@@ -82,57 +73,34 @@ class Navbar extends Component {
             </Link>
             </li>
             <li className="nav-item">
-            <a href onClick={this.logOut.bind(this)} className="nav-link logout">
+         <a href onClick={this.logOut.bind(this)} className="nav-link">
           Logout
           </a> 
         
           </li>
         </ul>
        )
-       
        return (
+         <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+            <button className="navbar-toggler" type="button" 
+            data-toggle="collapse" data-target="#navbar1"
+            aria-controls="navbar1" aria-expanded="false"
+            aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-        <nav className="navbar navbar-inverse navbar-fixed-top">
-           <div className="container">
-           <div className="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-           
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button>
-        </div>
-        <div id="navbar" className="collapse navbar-collapse">
-          <ul className="nav navbar-nav">
-          <Link to="/" className="nav-link active logo">
-               You&#9829;Dev
+            <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
+            <ul className="navbar-nav">
+               <li className="nav-item">
+                <Link to="/" className="nav-link">
+                 You&#9829;Dev
                </Link>
-          </ul>
-        </div>
-        {localStorage.usertoken ? userLink : loginRegLink}
-      </div>
-    </nav>
-        //  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        //     <button className="navbar-toggler" type="button" 
-        //     data-toggle="collapse" data-target="#navbar1"
-        //     aria-controls="navbar1" aria-expanded="false"
-        //     aria-label="Toggle navigation">
-        //       <span className="navbar-toggler-icon"></span>
-        //     </button>
+               </li>
+         </ul>
 
-        //     <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
-        //     <ul className="navbar-nav">
-        //        <li className="nav-item">
-        //         <Link to="/" className="nav-link">
-        //          You&#9829;Dev
-        //        </Link>
-        //        </li>
-        //  </ul>
-
-        //  {localStorage.usertoken ? userLink : loginRegLink}
-        //     </div>
-
-        //  </nav>
+         {localStorage.usertoken ? userLink : loginRegLink}
+            </div>
+         </nav>
        )
      }
 }
