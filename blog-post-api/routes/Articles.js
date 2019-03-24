@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
 require("dotenv").config();
 
 //bring in models
 const Article = require('../models/Article');
 const User = require('../models/User');
+
+
 
 //@route Get Articles
 //@desc All Articles
@@ -36,11 +37,30 @@ router.get('/', (req, res) => {
     });
     
 
+    // get specific article
+// router.get('/:id', (req, res)=>{
+//     Article.findById(req.params.id)
+//     .populate({
+//           path: "user", 
+//           model: "User"
+//     })
+//     .then(res => {
+//       res.json({
+//             article: req.article.toJSON(),
+//           });
+//     })
+//     .catch(err => {
+//       res.json(err, 'Pula ...num merge populate?');
+//     })
+
+// })
+
     router.get('/:id', (req, res, next) => {
       return res.json({
         article: req.article.toJSON(),
       });
     });
+    
     
 
 

@@ -8,18 +8,75 @@ users.use(cookieParser());
 require("dotenv").config();
 
 const User = require('../models/User');
-users.use(cors());
 
-const protect = (req, res, next)=> {
-  debugger
-  if(req.session.currentUser) {
-    next()
-  } else {
-    res.status(403).json({message: "Unauthorized"})
-  }
-}
+users.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3001']
+}));
+
+// const protect = (req, res, next)=> {
+//   debugger
+//   if(req.session.currentUser) {
+//     next()
+//   } else {
+//     res.status(403).json({message: "Unauthorized"})
+//   }
+// }
 
 // process.env.SECRET_KEY = 'secret';
+
+users.get('/', (req, res) => {
+  User.find()
+  .sort({ date: -1 })
+  .then(users => res.json(users));
+    });
+
+
+    users.get('/', (req, res, next) => {
+      return User.find()
+        .sort({ createdAt: 'descending' })
+        .then((users) => res.json({ users: users.map(user => user.toJSON()) }))
+        .catch(next);
+    });
+    
+    users.param('id', (req, res, next, id) => {
+      return User.findById(id, (err, user) => {
+        if(err) {
+          return res.sendStatus(404);
+        } else if(user) {
+          req.user = user;
+          return next();
+        }
+      }).catch(next);
+    });
+    
+    users.get('/:id', (req, res, next) => {
+      return res.json({
+        user: req.user.toJSON(),
+      });
+    });
+
+
+//Edit single Article
+users.put('/:id', function(req, res, next) {
+  User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+    if (err) return next(err);
+    res.json(user);
+  });
+});
+
+    
+// users.get('/', function(req, res, next) {
+//   User.find({}).select({first_name: 1, last_name: 1, email: 1, _id: 1})
+//     .then(users=> {
+//       res.json(users)
+//     })
+// });
+
+
+
+
+
 
 users.post('/register', (req, res) => {
   const today = new Date();
@@ -87,7 +144,7 @@ users.post('/login', (req, res) => {
   })
 })
 
-users.get('/profile', protect, (req, res) => {
+users.get('/profile', (req, res) => {
   const decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
   User.findOne({
@@ -105,31 +162,23 @@ users.get('/profile', protect, (req, res) => {
   })
 })
 
-// users.post('/logout', (req, res, next) => {
-//   // req.logout() is defined by passport
-//   //  req.session.currentUser;
-//   req.logout();
-//   res.status(200).json({ message: 'Log out success!' });
-// });
 
+users.post("/users/:id", (req,res)=> {
+  User.findById(req.params.id)
+    .populate("articles")
+    .then((results)=>{
+      res.json(results)
+    })
+    .catch((error)=> {
+      res.json(error)
+    })
+})
 
-// users.get('/profile', protect,(req, res, next) => {
-//   // req.isAuthenticated() is defined by passport
-//   if (req.isAuthenticated()) {
-//       res.status(200).json(req.user);
-//       return;
-//   }
-//   res.status(403).json({ message: 'Unauthorized' });
-// });
-
-users.get("/logout", protect, (req, res, next) => {
-  res.clearCookie("name");
-  req.session.currentUser.destroy((err) => {
-  // req.logout();
-  res.status(200).json({ message: 'Log out success!' });
-  });
-});
-
+users.post("/logout", (req, res)=> {
+  debugger
+  req.session.destroy()
+  res.send(200).json({message: "session destroyed"})
+})
 
 
 module.exports = users;

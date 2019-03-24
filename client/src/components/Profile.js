@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import jwt_decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import './css/Profile.css';
+import axios from 'axios';
 
 
 class Profile extends Component {
@@ -12,20 +13,23 @@ class Profile extends Component {
       last_name: '',
       email: '',
 			 imageUrl: '',
-      date: ''
+			date: '',
+			id:'',
     }
   }
  
 componentDidMount () {
   const token = localStorage.usertoken
 	console.log(localStorage);
-  const decoded = jwt_decode(token)
+	const decoded = jwt_decode(token)
+	console.log(decoded);
   this.setState({
     first_name: decoded.first_name,
     last_name: decoded.last_name,
     email: decoded.email,
 		imageUrl: decoded.imageUrl,
-    date: decoded.date
+		date: decoded.date,
+		_id: decoded._id,
   })
 }
 
@@ -44,6 +48,7 @@ render()
 				<div className="profile-usertitle">
 					<div className="profile-usertitle-name">
           {this.state.first_name} {this.state.last_name}
+					{/* {this.state._id} */}
 					</div>
 					<div className="profile-usertitle-job">
 						Joined at: <h4>{this.state.date}</h4>
@@ -63,18 +68,18 @@ render()
 							Overview </a>
 						</li>
 						<li>
-							<a href="/">
+							<a href="#">
 							<i className="glyphicon glyphicon-user"></i>
-							Account Settings </a>
+							Account Settings  <Link to={`/editProfile/${this.state._id}`} className="btn btn-danger">Edit</Link>&nbsp;  </a>
 						</li>
 						<li>
 							<a href="/" target="_blank">
 							<i className="glyphicon glyphicon-ok"></i>
 							{this.state.email} </a>
 						</li>
-						<li>
+						{/* <li>
 							  <Link to={`/editProfile/${this.state._id}`} className="btn btn-success">Edit</Link>&nbsp;
-						</li>
+						</li> */}
 					</ul>
 				</div>
 			

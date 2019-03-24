@@ -10,23 +10,23 @@ import Article from './components/Article';
 import OneArticle from './components/OneArticle';
 import ShowArticles from './components/ShowArticles';
 import EditArticle from './components/EditArticle';
-// import EditProfile from './components/EditProfile';
+import EditProfile from './components/EditProfile';
 import PrivateRoute from "./components/PrivateRoute";
 import {Whoops404} from './components/Whoops404';
 
 
 
 class App extends Component {
-    // constructor(props){
-    //     super(props)
-    //     this.state = { loggedInUser: null };
-    //   }
+    constructor(props){
+        super(props)
+        this.state = { loggedInUser: null };
+      }
     
-    //   getTheUser= (userObj) => {
-    //     this.setState({
-    //       loggedInUser: userObj
-    //     })
-    //   }
+      getTheUser= (userObj) => {
+        this.setState({
+          loggedInUser: userObj
+        })
+      }
     
 
     render() {
@@ -34,7 +34,8 @@ class App extends Component {
 
             <Router>
                 <div className="App">
-                    <Navbar/>
+                    <Navbar />
+
                     {/* <Navbar userInSession={this.state.loggedInUser} /> */}
                     <Route exact path="/" component={Landing}/>
                     <div className="container">
@@ -47,7 +48,7 @@ class App extends Component {
                         <PrivateRoute path="/articles" component={ShowArticles}/>
                         <PrivateRoute path="/show/:id" component={OneArticle} />  {/*Show a single article */}
                         <PrivateRoute path="/edit/:id" component={EditArticle} />
-                        {/* <PrivateRoute path="/editProfile/:id" component={EditProfile} /> */}
+                        <PrivateRoute path="/editProfile/:id" component={EditProfile} />
                         <Route path="*" component={Whoops404} />
                         
                     </Switch>

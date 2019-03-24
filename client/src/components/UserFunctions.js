@@ -83,9 +83,9 @@ export const login = user => {
   return axios.post('users/login', {
     email: user.email,
     password: user.password
-  })
+  },  {withCredentials: true})
   .then(res => {
-    localStorage.setItem('usertoken', res.data, { header: true })
+    localStorage.setItem('usertoken', res.data)
     console.log(res.data);
     // localStorage.setItem('refreshToken', res.data)
     return res.data
@@ -100,8 +100,9 @@ export const articles = newArticle => {
     title: newArticle.title,
     author: newArticle.author,
     body: newArticle.body,
-    imageUrl: newArticle.imageUrl
-  })
+    imageUrl: newArticle.imageUrl,
+    owner: newArticle.id
+  }, {withCredentials: true})
   .then(res => {
     console.log('Article added!');
   })
@@ -120,7 +121,7 @@ export const handleUpload = theFile => {
 
 export const logOut = () => (e) => {
   e.preventDefault();
-  axios.get('/logout');
+  axios.post('/',  {withCredentials: true});
   localStorage.removeItem('usertoken');
   store.remove('loggedIn');
   console.log('you have been logged out. boo!');

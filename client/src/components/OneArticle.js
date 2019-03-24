@@ -15,12 +15,13 @@ class OneArticle extends Component {
   }
 
   componentDidMount() {
-    axios.get('/articles/'+this.props.match.params.id, {withCredentials:true})
+    const { params } = this.props.match;
+    axios.get(`/articles/${params.id}`, {withCredentials:true})
       .then(res => {
         this.setState({ oneArticle: res.data.article })
         console.log(this.state.oneArticle);
       });
-      this.state = { loggedInUser: true };
+      // this.state = { loggedInUser: true };
 
   }
 
@@ -66,8 +67,8 @@ class OneArticle extends Component {
                </div> */}
     
              <AuthorizeOnly allowedRoles={['admin']} user={this.loggedInUser}>
-             <Link to={`/edit/${this.state.oneArticle._id}`} class="btn btn-success">Edit</Link>&nbsp;
-              <button onClick={this.delete.bind(this, this.state.oneArticle._id)} class="btn btn-danger">Delete</button>
+             <Link to={`/edit/${this.state.oneArticle._id}`} className="btn btn-success">Edit</Link>&nbsp;
+              <button onClick={this.delete.bind(this, this.state.oneArticle._id)} className="btn btn-danger">Delete</button>
             </AuthorizeOnly>
       </div>
             <span className="badge post">Posted {this.state.oneArticle.date}</span>

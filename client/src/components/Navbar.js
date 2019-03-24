@@ -10,12 +10,12 @@ class Navbar extends Component {
 
      logOut(e) {
        e.preventDefault();
-       axios.get('/logout');
+       axios.get('/');
        localStorage.removeItem('usertoken');
        store.remove('loggedIn');
        console.log('you have been logged out. boo!');
        this.props.history.push('/')
-       store.set('loggedIn', false);
+      //  store.set('loggedIn', false);
      }
 
      

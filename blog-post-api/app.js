@@ -38,7 +38,7 @@ app.use(cors({
   });
 
   app.use(session({  //setup sessions always here 
-    secret: "basic-auth-secret",
+    secret: "secret",
     key: 'sid',
     cookie: { maxAge: 60000 },
     resave: true,
@@ -53,27 +53,27 @@ app.use(cors({
   const Users = require('./routes/Users');
   app.use('/users', Users);
 
-  // app.use((req, res, next) => {
-  //   if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
-  //     next(); // ==> go to the next route ---
-  //   } else {                          //    |
-  //     res.redirect("/login");         //    |
-  //   }                                 //    |
-  // }); 
+  app.use((req, res, next) => {
+    if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
+      next(); // ==> go to the next route ---
+    } else {                          //    |
+      res.status(403).json({message: "Unauthorized, session problem.?"})        //    |
+    }                                 //    |
+  }); 
 
-  const protect = (req, res, next)=> {
-    debugger
-    if(req.session.currentUser) {
-      next()
-    } else {
-      res.status(403).json({message: "Unauthorized"})
-    }
-  }
+  // const protect = (req, res, next)=> {
+  //   debugger
+  //   if(req.session.currentUser) {
+  //     next()
+  //   } else {
+  //     res.status(403).json({message: "Unauthorized"})
+  //   }
+  // }
   
 
   // const Articles = require('./routes/Articles');
-  app.use('/articles', protect, require('./routes/Articles'));
-  app.use('/', protect, require('./routes/file-upload-routes'));
+  app.use('/articles', require('./routes/Articles'));
+  app.use('/', require('./routes/file-upload-routes'));
 
 // app.get('/', (req, res, next) => {
 //   res.json(users);

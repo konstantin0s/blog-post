@@ -3,27 +3,27 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {handleUpload} from './UserFunctions';
 
-class EditArticle extends Component {
+class EditProfile extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      article: {}
+      user: {}
     };
   }
 
   componentDidMount() {
-    axios.get('/articles/'+this.props.match.params.id, {withCredentials:true})
+    axios.get('/users/'+this.props.match.params.id)
       .then(res => {
-        this.setState({ article: res.data.article });
-        console.log(this.state.article);
+        this.setState({ user: res.data.user });
+        console.log(this.state.user);
       });
   }
 
   onChange = (e) => {
-    const state = this.state.article
+    const state = this.state.user
     state[e.target.name] = e.target.value;
-    this.setState({article:state});
+    this.setState({user:state});
   }
 
   handleFileUpload = e => {
@@ -48,11 +48,11 @@ class EditArticle extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { title, body, author, imageUrl } = this.state.article;
+    const { first_name, last_name, email, password } = this.state.user;
 
-    axios.put('/articles/'+this.props.match.params.id, { title, body, author, imageUrl })
+    axios.put('/users/'+this.props.match.params.id, { first_name, last_name, email, password })
       .then((result) => {
-        this.props.history.push("/show/"+this.props.match.params.id)
+        this.props.history.push("/profile/"+this.props.match.params.id)
       });
   }
 
@@ -62,28 +62,32 @@ class EditArticle extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              EDIT BLOG
+              EDIT PROFILE
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to={`/show/${this.state.article._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Your Blog</Link></h4>
+            <h4><Link to={`/profile/${this.state.user._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Your Profile</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
-                <label for="title">Title:</label>
-                <input type="text" class="form-control" name="title" value={this.state.article.title} onChange={this.onChange} placeholder="Title" />
+                <label for="title">First Name:</label>
+                <input type="text" class="form-control" name="first_name" value={this.state.user.first_name} onChange={this.onChange} placeholder="First Name" />
               </div>
               <div class="form-group">
-                <label for="author">Author:</label>
-                <input type="text" class="form-control" name="author" value={this.state.article.author} onChange={this.onChange} placeholder="Author" />
+                <label for="author">Last Name:</label>
+                <input type="text" class="form-control" name="last_name" value={this.state.user.last_name} onChange={this.onChange} placeholder="Last Name" />
               </div>
               <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea type="text" class="form-control" name="body" value={this.state.article.body} onChange={this.onChange} placeholder="Description" />
+                <label for="description">Email:</label>
+                <input type="text" class="form-control" name="email" value={this.state.user.email} onChange={this.onChange} placeholder="Email" />
               </div>
+              {/* <div class="form-group">
+                <label for="description">Password:</label>
+                <input type="text" class="form-control" name="password" value={this.state.user.password} onChange={this.onChange} placeholder="Password" />
+              </div> */}
 
-              <input type="file" onChange={(e) => this.handleFileUpload(e)} /> 
+              {/* <input type="file" onChange={(e) => this.handleFileUpload(e)} />  */}
               <button type="submit" className="btn btn-lg btn-primary btn-block">
-                              Post
+                              Update
               </button>
             </form>
           </div>
@@ -93,4 +97,4 @@ class EditArticle extends Component {
   }
 }
 
-export default EditArticle;
+export default EditProfile;
