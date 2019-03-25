@@ -127,8 +127,10 @@ router.post('/', (req, res) => {
 });
 
 //Edit single Article
-router.put('/:id', function(req, res, next) {
+router.put('/one/:id', function(req, res, next) {
+  debugger
   Article.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+    debugger
     if (err) return next(err);
     res.json(post);
   });

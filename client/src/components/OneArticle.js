@@ -74,7 +74,10 @@ class OneArticle extends Component {
     // const { OneArticle } = this.state;
     console.log(this.state)
 
-    let buttons = (this.state.userId && this.state.userId === this.state.articleOwnerId) ? <button>edit</button> 
+    let buttons = (this.state.userId && this.state.userId === this.state.articleOwnerId) ? <button><div>
+            <Link to={`/edit/${this.state.article._id}`} class="btn btn-success">Edit</Link>&nbsp;
+            <button onClick={this.delete.bind(this, this.state.article._id)} class="btn btn-danger">Delete</button>
+        </div></button> 
     :
      null
      

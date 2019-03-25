@@ -13,7 +13,7 @@ class EditArticle extends Component {
   }
 
   componentDidMount() {
-    axios.get('/articles/'+this.props.match.params.id, {withCredentials:true})
+    axios.get('/articles/one/'+this.props.match.params.id, {withCredentials:true})
       .then(res => {
         this.setState({ article: res.data.article });
         console.log(this.state.article);
@@ -66,10 +66,10 @@ class EditArticle extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to={`/show/${this.state.article._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Your Blog</Link></h4>
+            {/* <h4><Link to={`/show/${this.state.article._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Your Blog</Link></h4> */}
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
-                <label for="title">Title:</label>
+                <label htmlFor="title">Title:</label>
                 <input type="text" class="form-control" name="title" value={this.state.article.title} onChange={this.onChange} placeholder="Title" />
               </div>
               <div class="form-group">
