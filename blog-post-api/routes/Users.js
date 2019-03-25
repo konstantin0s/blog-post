@@ -113,10 +113,12 @@ users.post('/register', (req, res) => {
 })
  
 users.post('/login', (req, res) => {
+  debugger
   User.findOne({
     email: req.body.email
   })
   .then(user => {
+    debugger
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
         req.session.currentUser = user; // check this if you cannot go to profile page!
@@ -126,21 +128,25 @@ users.post('/login', (req, res) => {
            last_name: user.last_name,
            email: user.email
          }
-
+         debugger
          let token = jwt.sign(payload, process.env.SECRET_KEY, {
            expiresIn: 1440
          })
+         debugger
          res.send(token)
       } else {
+        debugger
         res.json({error: 'User does not exist'})
       }
     } else {
+      debugger
       res.json({error: 'User does not exist'})
     }
   })
   .catch(err => {
-    res.send('error: ' + err)
-    res.send('/');
+    debugger
+    res.status(500).json(err)
+
   })
 })
 
@@ -163,7 +169,8 @@ users.get('/profile', (req, res) => {
 })
 
 
-users.post("/users/:id", (req,res)=> {
+users.post("/:id", (req,res)=> {
+  debugger
   User.findById(req.params.id)
     .populate("articles")
     .then((results)=>{

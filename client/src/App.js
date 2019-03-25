@@ -16,10 +16,14 @@ import {Whoops404} from './components/Whoops404';
 
 
 
+
 class App extends Component {
     constructor(props){
         super(props)
-        this.state = { loggedInUser: null };
+        this.state = { 
+          loggedInUser: null,
+        
+        };
       }
     
       getTheUser= (userObj) => {
@@ -27,7 +31,7 @@ class App extends Component {
           loggedInUser: userObj
         })
       }
-    
+
 
     render() {
         return (

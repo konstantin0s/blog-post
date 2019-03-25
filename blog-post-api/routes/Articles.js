@@ -6,79 +6,122 @@ require("dotenv").config();
 const Article = require('../models/Article');
 const User = require('../models/User');
 
-
-
 //@route Get Articles
 //@desc All Articles
 //@access Public
 router.get('/', (req, res) => {
+  debugger
   Article.find()
   .sort({ date: -1 })
   .then(articles => res.json(articles));
     });
 
+    router.get('/:userId/', (req, res) => {
+      debugger
+      Article.find({user: req.query.userId})
+      .then(articles =>{
+          res.json(articles);
+      })
+      .catch( err =>{
+          res.json(err);
+      })
+    })
+    
+
 
     router.get('/', (req, res, next) => {
+      debugger
       return Article.find()
+      .populate('owner')
         .sort({ createdAt: 'descending' })
         .then((articles) => res.json({ articles: articles.map(article => article.toJSON()) }))
         .catch(next);
     });
     
-    router.param('id', (req, res, next, id) => {
-      return Article.findById(id, (err, article) => {
-        if(err) {
-          return res.sendStatus(404);
-        } else if(article) {
-          req.article = article;
-          return next();
-        }
-      }).catch(next);
-    });
+    // router.param('id', (req, res, next, id) => {
+    //   console.log("hellooooooo")
+
+    //   debugger
+    //   return Article.findById(id, (err, article) => {
+    //     if(err) {
+    //       return res.sendStatus(404);
+    //     } else if(article) {
+    //       req.article = article;
+    //       return next();
+    //     }
+    //   }).catch(next);
+    // });
     
-
-    // get specific article
-// router.get('/:id', (req, res)=>{
-//     Article.findById(req.params.id)
-//     .populate({
-//           path: "user", 
-//           model: "User"
-//     })
-//     .then(res => {
-//       res.json({
-//             article: req.article.toJSON(),
-//           });
-//     })
-//     .catch(err => {
-//       res.json(err, 'Pula ...num merge populate?');
-//     })
-
-// })
+    router.get("/one/:id", (req,res)=> {
+      debugger
+      Article.findById(req.params.id)
+        .populate("owner")
+        .then((result)=>{
+          debugger
+          res.status(200).json(result)
+        })
+        .catch((error)=> {
+          res.status(500).json(error)
+        })
+    })
+    
+    // router.get("/:id", (req,res)=> {
+    //   Article.findById(req.params.id)
+    //     .populate("owner")
+    //     .then((res)=>{
+    //       res.json({
+    //               article: req.article.toJSON(),
+    //                     })
+    //     })
+    //     .catch((error)=> {
+    //       res.json(error)
+    //     })
+    // })
+    
 
     router.get('/:id', (req, res, next) => {
-      return res.json({
-        article: req.article.toJSON(),
-      });
+      debugger
+      Article.findByIdAndUpdate(req.params.id, req.body)
+      .populate("owner")
+      .then((res) => {
+        res.json({
+            article: req.article.toJSON(),
+      })
+      .catch(err => {
+        res.json(err);
+      })
+      // return res.json({
+      //   article: req.article.toJSON(),
+      // });
     });
+  });
     
     
+  router.get('/one/:id', (req, res, next) => {
+    debugger
+    return res.json({
+      article: req.article.toJSON(),
+    });
+  })
 
 
 
 //add submit POST route
 router.post('/', (req, res) => {
+  debugger
   const today = new Date();
   const newArticle = new Article({
     title: req.body.title,
     author: req.body.author,
     body: req.body.body,
     imageUrl: req.body.imageUrl,
-    // owner: req.user._id, //  -> watch out with this(causes problems when addding new article)
+    owner: req.body.userId, //  -> watch out with this(causes problems?
     created: today
-  });
-
+  }); 
+  debugger
    newArticle.save().then(article => res.json(article))
    .catch(err => {
+    debugger
     res.json(err);
     })
 });

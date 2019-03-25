@@ -68,7 +68,7 @@ class Login extends Component {
                  console.log(user);
                 // this.props.getUser(res);
                 // this.props.loggedIn({loggedIn: true});
-                this.props.history.push('/profile');
+                this.props.history.push('/articles');
             }
         })
         .catch((err)=> {

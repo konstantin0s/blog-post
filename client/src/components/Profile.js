@@ -14,7 +14,7 @@ class Profile extends Component {
       email: '',
 			 imageUrl: '',
 			date: '',
-			id:'',
+			id:''
     }
   }
  
