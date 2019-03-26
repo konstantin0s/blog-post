@@ -6,15 +6,31 @@ import axios from 'axios';
 
 
 class Profile extends Component {
-  constructor() {
-    super()
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     user: {}
+  //   };
+  // }
+
+  // componentDidMount() {
+  //   axios.get('/one/'+this.props.match.params.id)
+  //     .then(res => {
+  //       this.setState({ user: res.data.user });
+  //       console.log(this.state.user);
+  //     });
+  // }
+	
+	constructor(props) {
+    super(props);
     this.state = {
       first_name: '',
       last_name: '',
       email: '',
 			 imageUrl: '',
 			date: '',
-			id:''
+			id:'',
+			errorMessage: ''
     }
   }
  
@@ -22,7 +38,6 @@ componentDidMount () {
   const token = localStorage.usertoken
 	console.log(localStorage);
 	const decoded = jwt_decode(token)
-	console.log(decoded);
   this.setState({
     first_name: decoded.first_name,
     last_name: decoded.last_name,

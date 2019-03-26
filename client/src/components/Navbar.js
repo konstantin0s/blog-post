@@ -6,6 +6,20 @@ import store from 'store';
 
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {}
+    };
+  }
+
+  componentDidMount() {
+    axios.get('/users/'+this.props.match.params.id)
+      .then(res => {
+        this.setState({ user: res.data.user });
+        console.log(this.state.user);
+      });
+  }
 
 
      logOut(e) {
@@ -39,7 +53,7 @@ class Navbar extends Component {
        <ul className="nav navbar-nav navlinks">
          <li className="nav-item">
            <Link to="/profile" className="nav-link user">
-             {/* {this.state.first_name}'s Profile */} Profile
+            Profile
            </Link>
            </li>
            <li className="nav-item">

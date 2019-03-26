@@ -18,19 +18,19 @@ import {Whoops404} from './components/Whoops404';
 
 
 class App extends Component {
-    constructor(props){
-        super(props)
-        this.state = { 
-          loggedInUser: null,
+    // constructor(props){
+    //     super(props)
+    //     this.state = { 
+    //       loggedInUser: null,
         
-        };
-      }
+    //     };
+    //   }
     
-      getTheUser= (userObj) => {
-        this.setState({
-          loggedInUser: userObj
-        })
-      }
+    //   getTheUser= (userObj) => {
+    //     this.setState({
+    //       loggedInUser: userObj
+    //     })
+    //   }
 
 
     render() {

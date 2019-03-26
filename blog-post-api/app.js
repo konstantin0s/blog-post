@@ -78,6 +78,7 @@ app.use(cors({
   // const Articles = require('./routes/Articles');
   app.use('/articles', require('./routes/Articles'));
   app.use('/', require('./routes/file-upload-routes'));
+  app.use('/', require("./routes/Comments"));
 
 // app.get('/', (req, res, next) => {
 //   res.json(users);

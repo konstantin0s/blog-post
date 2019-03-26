@@ -20,8 +20,16 @@ const articleSchema = new Schema({
   imageUrl: { type: String,
      required: true,
   },
-  owner: {type: Schema.Types.ObjectId,
+  owner: {type: Schema.Types.ObjectId,  //article owner
      ref: "User"},
+  comments: [ {
+      owner: {
+        type: Schema.Types.ObjectId,
+         ref: "User"
+      },
+      text: String
+  }
+  ],
   date: {
     type: Date,
     default: Date.now

@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './css/OneArticle.css';
-import AuthorizeOnly from '../components/AuthorizeOnly';
-// import {login} from './UserFunctions';
 import jwt_decode from 'jwt-decode';
+import Moment from 'moment';
 
 
 class OneArticle extends Component {
@@ -14,7 +13,8 @@ class OneArticle extends Component {
     this.state = {
     article: [],
     userId:"",
-    articleOwnerId:""
+    articleOwnerId:"",
+    owner:""
     }
     
   }
@@ -35,8 +35,6 @@ class OneArticle extends Component {
         const {_id} = jwt_decode(userToken)
         debugger;
         this.setState({ article: res.data, userId:_id, articleOwnerId:res.data.owner._id })
-        console.log("id:", _id);
-        console.log("res data:", res.data);
       
       }).catch(err => {
         debugger
@@ -44,6 +42,7 @@ class OneArticle extends Component {
         console.log(err)
       })
       // this.state = { loggedInUser: true };
+      
 
   }
 
@@ -55,23 +54,35 @@ class OneArticle extends Component {
       });
   }
 
-  loggedInUser =  {
-    role:'admin' 
+  saveComments() {
+    const message = document.getElementById("comment").value;
+    axios.post('savecomment', {owner: this.state.owner, text: message})
+    .then((res) => {
+        document.getElementById("comment").value = "";
+    });
   }
 
-  // ownershipCheck = (article) => {
-  //   if(this.props.loggedIn && article.owner == this.props.loggedIn._id){
-  //     return (
-  //       <div>
-  //          <Link to={`/edit/${this.state.oneArticle._id}`} class="btn btn-success">Edit</Link>&nbsp;
-  //              <button onClick={this.delete.bind(this, this.state.oneArticle._id)} class="btn btn-danger">Delete</button>
-  //       </div>
-  //     )
-  //   } 
-  // }
+  showCommentBox() {
+    if (this.state.userId != "") {
+      return <div className="">
+       <textarea id="comment" placeholder="Add comment" className="form-comtrol"></textarea>
+       <button onClick={this.saveComments} className="btn">Save</button>
+       </div>
+    }
+  }
+
+   showComments() {
+     if (this.state.article.comments instanceof Array) {
+       return  <div className="col-md-12">
+           <br />
+           <h5>co</h5>
+           <p>...</p>
+           </div>
+     }
+
+   }
   
   render() {
-    // const { OneArticle } = this.state;
     console.log(this.state)
 
     let buttons = (this.state.userId && this.state.userId === this.state.articleOwnerId) ? <button><div>
@@ -84,30 +95,22 @@ class OneArticle extends Component {
     debugger
     return (
       <div className="container">
-
-      {buttons}
+    
+           {buttons}  {/* Show edit & delete buttons */}
           <div className="col-md-12 oneArticle">         
              <h1>{this.state.article.title}</h1>
              <img className="rounded float-left img-responsive" alt="Article" src={this.state.article.imageUrl} />
              <p>{this.state.article.body}</p>
              <h4>Written by: <div className="author">{this.state.article.author}</div></h4>
-             <div>
+                 
+            {this.showCommentBox()}
+             <div className="row">
+            {this.showComments()}
+              </div>
 
-            
-               {/* <div>
-            
-               <Link to={`/edit/${this.state.article._id}`} class="btn btn-success">Edit</Link>&nbsp;
-            <button onClick={this.delete.bind(this, this.state.article._id)} class="btn btn-danger">Delete</button>
-               </div> */}
-    
-             {/* <AuthorizeOnly allowedRoles={['admin']} user={this.loggedInUser}> */}
-
-
-             {/* <Link to={`/edit/${this.state.article._id}`} className="btn btn-success">Edit</Link>&nbsp;
-              <button onClick={this.delete.bind(this, this.state.article._id)} className="btn btn-danger">Delete</button> */}
-            {/* </AuthorizeOnly> */}
-      </div>
-            <span className="badge post">Posted {this.state.article.date}</span>
+            <span className="badge post">Posted 
+            {Moment(this.state.article.date).format('YYYY-MM-DD')}
+            </span>
             <div className="pull-right"><span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>
             <span className="label label-danger">Danger</span>
                <div className="edel"> 

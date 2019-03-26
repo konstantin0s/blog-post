@@ -79,9 +79,9 @@ class Login extends Component {
     render() {
         const { error } = this.state;
         return (
-            <div className="d-flex justify-content-center">
-                <div className="d-flex justify-content-center">
-                    <div className="col-md-6 mt-5">
+            <div className="center">
+                <div className="carding">
+                    <div className="col-md-10">
                         <form noValidate error={error} onSubmit={this.onSubmit}>
                             <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
                             {error && <Message error={error} 
@@ -89,30 +89,30 @@ class Login extends Component {
                             <div className="form-group">
                                 <label htmlFor="email">
                                     Email Address
-                                </label>
+                                </label><br />
                                 <input
                                     type="email"
-                                    className="form-control"
+                                    className="form-item"
                                     name="email"
                                     placeholder="Enter email"
                                     value={this.state.email}
                                     onChange={this.onChange}/>
-                            </div>
-                            <div style={{ fontSize: 12, color: "red"}}>{this.state.emailError}</div>
+                            </div> 
+                            <div style={{ fontSize: 12, color: "red"}}>{this.state.emailError}</div><br />
                             <div className="form-group">
                                 <label htmlFor="email">
                                     Password
-                                </label>
+                                </label> <br />
                                 <input
                                     type="password"
-                                    className="form-control"
+                                    className="form-item"
                                     name="password"
                                     placeholder="Enter password"
                                     value={this.state.password}
                                     onChange={this.onChange}/>
                             </div>
                             <div style={{ fontSize: 12, color: "red"}}>{this.state.passwordError}</div>
-                            <button type="submit" className="btn btn-lg btn-primary btn-block">
+                            <button type="submit" className="form-submit btn btn-lg btn-primary btn-block">
                                 Sign in
                             </button>
                         </form>

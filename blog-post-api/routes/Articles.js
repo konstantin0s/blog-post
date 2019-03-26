@@ -5,6 +5,7 @@ require("dotenv").config();
 //bring in models
 const Article = require('../models/Article');
 const User = require('../models/User');
+const Comment = require('../models/Comment');
 
 //@route Get Articles
 //@desc All Articles

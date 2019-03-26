@@ -57,7 +57,7 @@ users.get('/', (req, res) => {
     });
 
 
-//Edit single Article
+//Edit single USer
 users.put('/:id', function(req, res, next) {
   User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
     if (err) return next(err);
@@ -66,10 +66,39 @@ users.put('/:id', function(req, res, next) {
 });
 
     
-// users.get('/', function(req, res, next) {
-//   User.find({}).select({first_name: 1, last_name: 1, email: 1, _id: 1})
-//     .then(users=> {
-//       res.json(users)
+users.get('/:id', function(req, res, next) {
+  User.findById(req.params.id)
+    .then((user)=>{
+      debugger
+      res.json(user)
+      debugger
+    })
+    .catch((error)=> {
+      res.json(error)
+    })
+});
+
+users.get('/:id', function(req, res, next) {
+  User.findById(req.params.id)
+    .then((user)=>{
+      debugger
+      res.json(user)
+      debugger
+    })
+    .catch((error)=> {
+      res.json(error)
+    })
+});
+
+// users.get('/one/:id', function(req, res, next) {
+//   User.findById(req.params.id)
+//     .then((user)=>{
+//       debugger
+//       res.json(user)
+//       debugger
+//     })
+//     .catch((error)=> {
+//       res.json(error)
 //     })
 // });
 
