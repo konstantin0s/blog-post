@@ -38,7 +38,7 @@ class ShowArticles extends Component {
   render() {
     return ( 
   <div className="container showArticles">
-       <form className=" active-pink active-pink-2">
+       <form className="active-pink active-pink-2">
   <i className="fas fa-search" aria-hidden="true"></i>
   <input onChange={this.searchHandler} className="form-item" type="text" placeholder="Search" aria-label="Search" />
 </form>

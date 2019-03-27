@@ -49,10 +49,7 @@ app.use(cors({
     })
   }));
 
-  // app.use("/users", (req, res, next) => {
-  //   debugger
-  //   next()
-  // })
+
   const Users = require('./routes/Users');
   app.use('/users', Users);
 

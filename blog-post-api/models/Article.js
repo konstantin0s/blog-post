@@ -30,6 +30,8 @@ const articleSchema = new Schema({
       text: String
   }
   ],
+  // likes: [{type: mongoose.Schema.ObjectId, ref: 'User'}],
+
   date: {
     type: Date,
     default: Date.now

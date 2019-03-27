@@ -57,7 +57,7 @@ router.get('/', (req, res) => {
       debugger
       Article.findById(req.params.id)
         .populate("owner")
-        .populate({path: 'comments.owner', select: 'first_name`'})
+        .populate({path: 'comments.owner', select: 'first_name'})
         .then((result)=>{
           debugger
           res.status(200).json(result)
@@ -150,6 +150,31 @@ router.post('/savecomment', (req, res, next) => {
 })
 
 
+//  router.put('/like', (req, res) => {
+//   Article.findByIdAndUpdate(req.body.articleId, {$push: {likes: req.body.userId}}, {new: true})
+//   .exec((err, result) => {
+//     if (err) {
+//       return res.status(400).json({
+//         error: errorHandler.getErrorMessage(err)
+//       })
+//     }
+//     res.json(result)
+//   })
+// }
+
+//  router.put('/unlike', (req, res) => {
+//   Article.findByIdAndUpdate(req.body.articleId, {$pull: {likes: req.body.userId}}, {new: true})
+//   .exec((err, result) => {
+//     if (err) {
+//       return res.status(400).json({
+//         error: errorHandler.getErrorMessage(err)
+//       })
+//     }
+//     res.json(result)
+//   })
+// }
+
+
 //add Submit POST comment route
 // router.post('/savecomment', (req, res, next) => {
 //   debugger
@@ -201,6 +226,7 @@ router.put('/one/:id', function(req, res, next) {
     debugger
     if (err) return next(err);
     res.json(post);
+    debugger
   });
 });
 

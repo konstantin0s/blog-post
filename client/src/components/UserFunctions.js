@@ -63,3 +63,38 @@ export const logOut = () => (e) => {
   store.remove('loggedIn');
   console.log('you have been logged out. boo!');
 };
+
+//  export const like = (params, credentials, articleId) => {
+//   return fetch('/articles/like/', {
+//     method: 'PUT',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Bearer ' + credentials.t
+//     },
+//     body: JSON.stringify({userId:params.userId, articleId: articleId})
+//   }).then((response) => {
+//     return response.json()
+//   }).catch((err) => {
+//     console.log(err)
+//   })
+// }
+
+
+
+
+// export const unlike = (params, credentials, articleId) => {
+//   return fetch('/articles/unlike/', {
+//     method: 'PUT',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Bearer ' + credentials.t
+//     },
+//     body: JSON.stringify({userId:params.userId, articleId: articleId})
+//   }).then((response) => {
+//     return response.json()
+//   }).catch((err) => {
+//     console.log(err)
+//   })
+// }

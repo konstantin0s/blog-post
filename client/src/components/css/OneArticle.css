@@ -33,12 +33,14 @@
   background-color: white;
 }
 
-.oneArticle {
-  display: flex;
-  flex-direction: column;
+.oneArticle  {
+ display: flex;
+  flex-direction: column; 
   align-items: center;
-  width: 100%;
-  top: 30px;
+  width: 100%; 
+  position: relative;
+  top: 100px;
+  left: 500px;
 }
 
 .body-text {

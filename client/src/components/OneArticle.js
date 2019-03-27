@@ -15,16 +15,12 @@ class OneArticle extends Component {
     userId:"",
     articleOwnerId:"",
     owner: "",
-    id: ""
+    id: "",
+    first_name: "",
+    like: false,
+    likes: 0
     }
-    $this = this;
   }
-
-
-  componentWillMount() {
-  
-  }
-
 
   componentDidMount() {
     const { params } = this.props.match;
@@ -35,8 +31,8 @@ class OneArticle extends Component {
         let userToken = localStorage.usertoken
         const {_id} = jwt_decode(userToken)
         debugger;
-        this.setState({ article: res.data, userId:_id, articleOwnerId:res.data.owner._id })
-          //  console.log(article);
+        this.setState({ article: res.data, userId:_id, first_name:res.data.owner.first_name, articleOwnerId:res.data.owner._id})
+           console.log(res.data.owner.first_name);
            console.log(this.state.article);
       }).catch(err => {
         debugger
@@ -46,7 +42,7 @@ class OneArticle extends Component {
 
       axios.get(`/users/one/:id`, {withCredentials:true})
       .then((response)=> {
-          this.setState({owner: response.data.id})
+          this.setState({owner: response.data.id, first_name:response.data.owner.first_name})
           debugger
           console.log(response.data.id)
           debugger
@@ -85,11 +81,6 @@ class OneArticle extends Component {
         <button id="submit" type="submit" className="btn btn-primary btn btn-outline comment-btn action-btn expand-right">Post Comment</button>
       </form>
     </div>
-      //     <div className="callout secondary">
-      // <h4 className="leave-comment">Add a Comment</h4>
-      //  <textarea id="comment" placeholder="Add comment" className="form-comtrol"></textarea>
-      //  <button onClick={() => this.saveComments(id)} className="btn">Save</button>
-      //  </div>
     }
   }
 
@@ -107,7 +98,7 @@ class OneArticle extends Component {
                                   <div className="col-md-11">
                                       <div className="media">
                                         <div className="media-body">
-                                          <a href="#" className="anchor-username"><h4 className="media-heading">Bayu Darmantra</h4></a> 
+                                          <a href="#" className="anchor-username"><h4 className="media-heading">Username: {c.owner.first_name}</h4></a> 
                                           <a href="#" className="anchor-time">51 mins</a>
                                         </div>
                                       </div>
@@ -152,25 +143,6 @@ class OneArticle extends Component {
                   </div>   
             </div>
           </div>
-   
-            {/* // return  <div classNameName="col-md-12" key={i}>
-            //             <br/>
-            //             {/* <h5>User: {c.article.owner.first_name}</h5> */}
-            {/* //             <p>{c.text}</p>
-            //         </div> */}
-          {/* //   return <div className="comment-user-text" key={i}>
-          //   <a href="#0" data-username="cathbailh" className="comment-username">
-          //       <span className="username">
-          //         {c.first_name}
-          //       </span>
-          //   </a>
-          //   <span className="on"> on </span>
-          //   <a href="#0">
-          //     <time className="block-comment-time">
-          //       {c.text}
-          //     </time>
-          //   </a>
-          // </div> */} 
         })
     }        
 }
@@ -190,7 +162,7 @@ class OneArticle extends Component {
                
       <div className="jumbotron">
       <div className="oneArticle">
-      
+       {buttons}  
       </div>
       <h1>{this.state.article.title}</h1>
               <img className="rounded float-left img-responsive" alt="Article" src={this.state.article.imageUrl} />
@@ -215,33 +187,6 @@ class OneArticle extends Component {
             </div>   
            </div>
 
-
-      // <div className="container">
-    
-      //      {buttons}  {/* Show edit & delete buttons */}
-      //     <div className="col-md-12 oneArticle">         
-      //        <h1>{this.state.article.title}</h1>
-      //        <img className="rounded float-left img-responsive" alt="Article" src={this.state.article.imageUrl} />
-      //        <p>{this.state.article.body}</p>
-      //        <span className="badge post">Posted 
-      //       {Moment(this.state.article.date).format('YYYY-MM-DD')}
-      //       </span>
-
-      //        <h4>Written by: <div className="author">{this.state.article.author}</div></h4>
-                 
-      //       {this.showCommentBox()}
-      //        <div className="row">
-      //       {this.showComments()}
-      //         </div>
-
-      //       <div className="pull-right"><span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>
-      //       <span className="label label-danger">Danger</span>
-      //          <div className="edel"> 
-      //          </div>
-      //      <hr/>
-      //       </div>   
-      //       </div>
-      // </div>
     );
   }
 }
