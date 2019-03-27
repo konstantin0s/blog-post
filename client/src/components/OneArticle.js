@@ -5,7 +5,7 @@ import './css/OneArticle.css';
 import jwt_decode from 'jwt-decode';
 import Moment from 'moment';
 
-
+let $this; 
 class OneArticle extends Component {
 
   constructor(props) {
@@ -14,9 +14,10 @@ class OneArticle extends Component {
     article: [],
     userId:"",
     articleOwnerId:"",
-    owner:""
+    owner: "",
+    id: ""
     }
-    
+    $this = this;
   }
 
 
@@ -35,14 +36,32 @@ class OneArticle extends Component {
         const {_id} = jwt_decode(userToken)
         debugger;
         this.setState({ article: res.data, userId:_id, articleOwnerId:res.data.owner._id })
-      
+          //  console.log(article);
+           console.log(this.state.article);
       }).catch(err => {
         debugger
         this.setState({errorMessage:err})
         console.log(err)
       })
-      // this.state = { loggedInUser: true };
-      
+
+      axios.get(`/users/one/:id`, {withCredentials:true})
+      .then((response)=> {
+          this.setState({owner: response.data.id})
+          debugger
+          console.log(response.data.id)
+          debugger
+      })
+      .catch((error)=> {
+          this.setState({error})
+      })
+    //   axios.get('/users', ).then((res) => {
+    //     this.setState({owner: res.data.id})
+    //   })
+    //   .catch(err => {
+    //     debugger
+    //     this.setState({errorMessage:err})
+    //     console.log(err)
+    // })
 
   }
 
@@ -54,12 +73,16 @@ class OneArticle extends Component {
       });
   }
 
-  saveComments() {
+  saveComments = ()=> {
     const message = document.getElementById("comment").value;
-    axios.post('savecomment', {owner: this.state.owner, text: message})
+    debugger
+    axios.post('/articles/savecomment', {id: this.state.article._id, owner: this.state.article.owner_id, text: message}, {withCredentials:true})
     .then((res) => {
+      debugger
         document.getElementById("comment").value = "";
-    });
+    }).catch(err => {
+      debugger
+    })
   }
 
   showCommentBox() {
@@ -71,16 +94,18 @@ class OneArticle extends Component {
     }
   }
 
-   showComments() {
-     if (this.state.article.comments instanceof Array) {
-       return  <div className="col-md-12">
-           <br />
-           <h5>co</h5>
-           <p>...</p>
-           </div>
-     }
-
-   }
+  showComments(){
+    if(this.state.article.comments instanceof Array){
+        const comments = this.state.article.comments.reverse();
+        return comments.map(function(c, i){
+            return  <div className="col-md-12" key={i}>
+                        <br/>
+                        <h5>{c.author.first_name}</h5>
+                        <p>{c.text}</p>
+                    </div>
+        })
+    }        
+}
   
   render() {
     console.log(this.state)

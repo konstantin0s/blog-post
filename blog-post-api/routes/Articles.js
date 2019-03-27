@@ -5,7 +5,7 @@ require("dotenv").config();
 //bring in models
 const Article = require('../models/Article');
 const User = require('../models/User');
-const Comment = require('../models/Comment');
+// const Comment = require('../models/Comment');
 
 //@route Get Articles
 //@desc All Articles
@@ -57,12 +57,14 @@ router.get('/', (req, res) => {
       debugger
       Article.findById(req.params.id)
         .populate("owner")
+        .populate({path: 'comments.owner', select: 'first_name`'})
         .then((result)=>{
           debugger
           res.status(200).json(result)
         })
         .catch((error)=> {
           res.status(500).json(error)
+          debugger
         })
     })
     
@@ -126,6 +128,71 @@ router.post('/', (req, res) => {
     res.json(err);
     })
 });
+
+//add Submit POST comment route
+router.post('/savecomment', (req, res, next) => {
+  debugger
+  const request = req.body;
+  // const {_id} = req.session.currentUser;
+  const id = request.id;	
+  debugger
+  Article.findByIdAndUpdate(id)
+  .exec((err, article) => {
+    debugger
+    if (err) res.send(err)
+    article.comment({owner: request.owner, text: request.text}).then((savedcomment)=>{
+      return res.send({result: true, data : savedcomment})
+     }).catch(err => {
+      debugger
+      res.json(err);
+      })
+  })
+})
+
+
+//add Submit POST comment route
+// router.post('/savecomment', (req, res, next) => {
+//   debugger
+//   const {owner, text, id} = req.body;
+//   const newComment = new Comment();
+//   if (!owner || !text) {
+//     // we should throw an error. we can do this check on the front end
+//     return res.json({
+//       success: false,
+//       error: 'You must provide an author and comment'
+//     });
+//   }
+  
+//   newComment.owner = req.session.currentUser_id;
+//   newComment.text = text;
+//   newComment.id = id;
+//   debugger
+//   newComment.save().then((createdComment) => {
+//     Article.findByIdAndUpdate(id, {$push:{comments: createdComment._id}})
+//   })
+//   .then(article => res.json(article))
+//    .catch(err => {
+//     debugger
+//     res.json(err);
+//     })
+  
+
+  //step1 Create Comment. {comment:text, owner:req.session.currentUser_id, article:id}
+  //step2 (then => (createdComment)) Article.findByIdAndUpdate(id, {$push:{comments: createdComment._id}})
+
+
+
+  // Article.findByIdAndUpdate(id, {$push:{comments: {text:text, owner:owner}}})
+  // .then((article) => {
+  //   debugger
+  //   article.comment({owner: request.owner, text: request.text}).then((savedcomment)=>{
+  //      res.status(200).json({result: true, data : savedcomment})
+  //    }).catch(err => {
+  //     debugger
+  //     res.status(500).json(err);
+  //     })
+  // })
+// })
 
 //Edit single Article
 router.put('/one/:id', function(req, res, next) {

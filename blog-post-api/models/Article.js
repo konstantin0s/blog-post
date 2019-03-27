@@ -36,6 +36,12 @@ const articleSchema = new Schema({
   }
 });
 
+articleSchema.methods.comment = function(c) {
+  debugger
+  this.comments.push(c);
+  return this.save();
+}
+
 const Article = mongoose.model('Article', articleSchema);
 
 module.exports = Article;

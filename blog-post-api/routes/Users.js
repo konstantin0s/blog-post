@@ -24,6 +24,21 @@ users.use(cors({
 // }
 
 // process.env.SECRET_KEY = 'secret';
+users.get('/one/:id', (req, res, next) => {
+  //console.log(req.params.id); // this is print our id parameter
+
+  // lets do this
+  const userid = req.params.id;
+  User.findById(userid, { password: 0 }).then((err, user)=> {  // this is because we should remove password in data showing
+          if (err)
+              res.send(err)
+          else if (!user)
+              res.send(404)
+          else
+              res.send(user)
+          next()            
+      })
+})
 
 users.get('/', (req, res) => {
   User.find()
@@ -69,9 +84,7 @@ users.put('/:id', function(req, res, next) {
 users.get('/:id', function(req, res, next) {
   User.findById(req.params.id)
     .then((user)=>{
-      debugger
       res.json(user)
-      debugger
     })
     .catch((error)=> {
       res.json(error)
@@ -81,9 +94,8 @@ users.get('/:id', function(req, res, next) {
 users.get('/:id', function(req, res, next) {
   User.findById(req.params.id)
     .then((user)=>{
-      debugger
       res.json(user)
-      debugger
+
     })
     .catch((error)=> {
       res.json(error)
@@ -142,12 +154,12 @@ users.post('/register', (req, res) => {
 })
  
 users.post('/login', (req, res) => {
-  debugger
+
   User.findOne({
     email: req.body.email
   })
   .then(user => {
-    debugger
+      
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
         req.session.currentUser = user; // check this if you cannot go to profile page!
@@ -157,23 +169,23 @@ users.post('/login', (req, res) => {
            last_name: user.last_name,
            email: user.email
          }
-         debugger
+    
          let token = jwt.sign(payload, process.env.SECRET_KEY, {
            expiresIn: 1440
          })
-         debugger
+       
          res.send(token)
       } else {
-        debugger
+       
         res.json({error: 'User does not exist'})
       }
     } else {
-      debugger
+    
       res.json({error: 'User does not exist'})
     }
   })
   .catch(err => {
-    debugger
+  
     res.status(500).json(err)
 
   })
@@ -199,7 +211,7 @@ users.get('/profile', (req, res) => {
 
 
 users.post("/:id", (req,res)=> {
-  debugger
+
   User.findById(req.params.id)
     .populate("articles")
     .then((results)=>{
@@ -211,7 +223,7 @@ users.post("/:id", (req,res)=> {
 })
 
 users.post("/logout", (req, res)=> {
-  debugger
+
   req.session.destroy()
   res.send(200).json({message: "session destroyed"})
 })

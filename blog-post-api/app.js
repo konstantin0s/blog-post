@@ -57,6 +57,7 @@ app.use(cors({
   app.use('/users', Users);
 
   app.use((req, res, next) => {
+    debugger
     if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
       next(); // ==> go to the next route ---
     } else {                          //    |
@@ -78,7 +79,7 @@ app.use(cors({
   // const Articles = require('./routes/Articles');
   app.use('/articles', require('./routes/Articles'));
   app.use('/', require('./routes/file-upload-routes'));
-  app.use('/', require("./routes/Comments"));
+  // app.use('/', require("./routes/Comments"));
 
 // app.get('/', (req, res, next) => {
 //   res.json(users);
