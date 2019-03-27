@@ -42,7 +42,7 @@ class App extends Component {
 
                     {/* <Navbar userInSession={this.state.loggedInUser} /> */}
                     <Route exact path="/" component={Landing}/>
-                    <div className="container">
+                    <div className="conta">
                     <Switch>
                     <Route exact path="/login" render={(props)=> <Login {...props} />} />
                      <Route exact path="/register" render={(props)=> <Register {...props} />} />
