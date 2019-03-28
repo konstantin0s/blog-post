@@ -55,22 +55,49 @@ class ShowArticles extends Component {
 
 {this.state.filtered.filter(searchingFor(this.state.term)).map((article) =>    
 
-<div className="col-md-12">          
-    <h1 className="blTitle">{article.title}</h1>
-    <p>You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words:
+ 
+
+<div className="card text-center">
+  {/* <div className="card-header">
+    Read about Personal Development.
+  </div> */}
+  <div className="card-body">
+    <h2 className="card-title">{article.title}</h2>
+    <p className="card-text">You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words:
     'Yes, we went to school in the sea, though you mayn't believe it—'
-    'I never said I didn't!' interrupted Alice.
-    'You did,' said the Mock Turtle.</p>
-  <p><Link className="linkz" to={`/show/${article._id}`}>Read MORE...</Link></p>   <hr/>
-<span className="badge">Posted 
-{Moment(article.date.dateFrom).format('YYYY-MM-DD')}
-</span>
-<div className="pull-right"><span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>
-<span className="label label-danger">Danger</span>
-</div>   
+     'I never said I didn't!' interrupted Alice.
+     'You did,' said the Mock Turtle.</p>
+    <Link className="btn btn-primary linkz" to={`/show/${article._id}`}>Read MORE...</Link>
+
+  </div>
+  <div className="card-footer text-muted">
+   <span> Posted: {Moment(article.date.dateFrom).format('YYYY-MM-DD')}</span>
+  </div>
+  <div className="badges">
+  <span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>
+   <span className="label label-danger">Danger</span>
+  </div><hr />
 </div>
+
 )}  
-   </div>
+
+</div>
+// {/* <div className="col-md-12">          
+//     <h1 className="blTitle">{article.title}</h1>
+//     <p className="mbr-text col-12 col-md-8 mbr-fonts-style display-7">You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words:
+//     'Yes, we went to school in the sea, though you mayn't believe it—'
+//     'I never said I didn't!' interrupted Alice.
+//     'You did,' said the Mock Turtle.</p>
+//   <p><Link className="linkz" to={`/show/${article._id}`}>Read MORE...</Link></p>   <hr/>
+// <span className="badge">Posted 
+// {Moment(article.date.dateFrom).format('YYYY-MM-DD')}
+// </span>
+// <div className="pull-right"><span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>
+// <span className="label label-danger">Danger</span>
+// </div>   
+// </div> */}
+
+//    {/* </div> */}
 
     );
   }

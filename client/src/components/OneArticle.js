@@ -65,12 +65,14 @@ class OneArticle extends Component {
       });
   }
 
-  saveComments = ()=> {
+  saveComments = (e)=> {
+    e.preventDefault()
     const message = document.getElementById("comment").value;
     debugger
     axios.post('/articles/savecomment', {id: this.state.article._id, owner: this.state.article.owner, text: message}, {withCredentials:true})
     .then((res) => {
       debugger
+      this.setState({ article: res.data})
         document.getElementById("comment").value = "";
     }).catch(err => {
       debugger
@@ -81,7 +83,7 @@ class OneArticle extends Component {
     if (this.state.userId != "") {
       return          <div className="callout secondary">
       <h4 className="leave-comment">Add a Comment</h4>
-      <form className="post-edit" ref="commentForm" onSubmit={this.saveComments}>
+      <form className="post-edit" ref="commentForm" onSubmit={e => this.saveComments(e)}>
         <textarea id="comment" className="form-comtrol" placeholder="Share your thoughts" required/> <br />
         <button id="submit" type="submit" className="btn btn-primary btn btn-outline comment-btn action-btn expand-right">Post Comment</button>
       </form>

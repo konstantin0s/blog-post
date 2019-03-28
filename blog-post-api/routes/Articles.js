@@ -57,7 +57,7 @@ router.get('/', (req, res) => {
       debugger
       Article.findById(req.params.id)
         .populate("owner")
-        .populate({path: 'comments.owner', select: 'first_name'})
+        .populate('comments.owner', 'first_name')
         .then((result)=>{
           debugger
           res.status(200).json(result)
@@ -82,30 +82,30 @@ router.get('/', (req, res) => {
     // })
     
 
-    router.get('/:id', (req, res, next) => {
-      debugger
-      Article.findByIdAndUpdate(req.params.id, req.body)
-      .populate("owner")
-      .then((res) => {
-        res.json({
-            article: req.article.toJSON(),
-      })
-      .catch(err => {
-        res.json(err);
-      })
-      // return res.json({
-      //   article: req.article.toJSON(),
-      // });
-    });
-  });
+  //   router.get('/:id', (req, res, next) => {
+  //     debugger
+  //     Article.findByIdAndUpdate(req.params.id, req.body)
+  //     .populate("owner")
+  //     .then((res) => {
+  //       res.json({
+  //           article: req.article.toJSON(),
+  //     })
+  //     .catch(err => {
+  //       res.json(err);
+  //     })
+  //     // return res.json({
+  //     //   article: req.article.toJSON(),
+  //     // });
+  //   });
+  // });
     
     
-  router.get('/one/:id', (req, res, next) => {
-    debugger
-    return res.json({
-      article: req.article.toJSON(),
-    });
-  })
+  // router.get('/one/:id', (req, res, next) => {
+  //   debugger
+  //   return res.json({
+  //     article: req.article.toJSON(),
+  //   });
+  // })
 
 
 
@@ -131,20 +131,30 @@ router.post('/', (req, res) => {
 
 //add Submit POST comment route
 router.post('/savecomment', (req, res, next) => {
-  debugger
+
   const request = req.body;
   // const {_id} = req.session.currentUser;
   const id = request.id;	
-  debugger
+
   Article.findByIdAndUpdate(id)
   .exec((err, article) => {
-    debugger
-    if (err) res.send(err)
-    article.comment({owner: request.owner, text: request.text}).then((savedcomment)=>{
-      return res.send({result: true, data : savedcomment})
+  
+    if (err) res.status(500).json(err)
+    article.comment({owner: req.session.currentUser, text: request.text})
+    .then((savedcomment)=>{
+      Article.findById(id)
+      .populate("owner")
+      .populate('comments.owner', 'first_name')
+      .exec().then(newArticle => {
+      
+        res.status(200).json(newArticle)
+
+      })
+      
+
      }).catch(err => {
-      debugger
-      res.json(err);
+    
+      res.status(500).json(err);
       })
   })
 })
