@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -15,7 +16,7 @@ class EditArticle extends Component {
   componentDidMount() {
     axios.get('/articles/one/'+this.props.match.params.id, {withCredentials:true})
       .then(res => {
-        this.setState({ article: res.data.article });
+        this.setState({ article: res.data });
         console.log(this.state.article);
       });
   }
@@ -50,7 +51,7 @@ class EditArticle extends Component {
 
     const { title, body, author, imageUrl } = this.state.article;
 
-    axios.put('/articles/'+this.props.match.params.id, { title, body, author, imageUrl })
+    axios.put('/articles/one/'+this.props.match.params.id, { title, body, author, imageUrl })
       .then((result) => {
         this.props.history.push("/show/"+this.props.match.params.id)
       });
@@ -72,10 +73,10 @@ class EditArticle extends Component {
                 <label htmlFor="title">Title:</label>
                 <input type="text" className="form-control" name="title" value={this.state.article.title} onChange={this.onChange} placeholder="Title" />
               </div>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label for="author">Author:</label>
                 <input type="text" className="form-control" name="author" value={this.state.article.author} onChange={this.onChange} placeholder="Author" />
-              </div>
+              </div> */}
               <div className="form-group">
                 <label for="description">Description:</label>
                 <textarea type="text" className="form-control" name="body" value={this.state.article.body} onChange={this.onChange} placeholder="Description" />

@@ -3,6 +3,10 @@ import { withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import store from 'store';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPeopleCarry } from '@fortawesome/free-solid-svg-icons'
+
 
 
 class Navbar extends Component {
@@ -57,12 +61,12 @@ class Navbar extends Component {
            </Link>
            </li>
            <li className="nav-item">
-           <Link to="/article" className="nav-link">
+           <Link to="/article" className="nav-link write">
              Write
            </Link>
            </li>
            <li className="nav-item">
-           <Link to="/articles" className="nav-link">
+           <Link to="/articles" className="nav-link read">
              Read
            </Link>
            </li>
@@ -89,8 +93,9 @@ class Navbar extends Component {
        </div>
        <div id="navbar" className="collapse navbar-collapse">
          <ul className="nav navbar-nav">
+         
          <Link to="/" className="nav-link active logo">
-              You&#9829;Dev
+          <FontAwesomeIcon icon={faPeopleCarry} />YouHelP  
               </Link>
          </ul>
        </div>

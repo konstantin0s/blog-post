@@ -83,7 +83,7 @@ class Login extends Component {
                 <div className="carding">
                     <div className="col-md-10">
                         <form noValidate error={error} onSubmit={this.onSubmit}>
-                            <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                            <h1 className="h3 mb-3 font-weight-normal">Please Log In</h1>
                             {error && <Message error={error} 
                              content="That username/password is incorrect. Try again!"  />}
                             <div className="form-group">

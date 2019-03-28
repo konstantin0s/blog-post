@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {articles} from './UserFunctions';
 import {handleUpload} from './UserFunctions';
 import axios from 'axios';
+import '../components/css/Article.css';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 class Article extends Component {
@@ -78,68 +81,147 @@ class Article extends Component {
 
   render() {
       return (
-          <div className="d-flex justify-content-center">
-             <div className="d-flex justify-content-center">
-                  <div className="col-md-6 mt-5">
-                      <form noValidate onSubmit={this.onSubmit}>
-                          <h1 className="h3 mb-3 font-weight-normal">Add Article:</h1>
-                          <div className="form-group">
-                              <label htmlFor="title">
-                                  Title:
-                              </label>
-                              <input
-                                  type="text"
-                                  className="form-control"
-                                  name="title"
-                                  placeholder="Title"
-                                  value={this.state.title}
-                                  onChange={this.onChange}/>
-                          </div>
-                          <div className="form-group">
-                              <label htmlFor="author">
-                                  Author:
-                              </label>
-                              <input
-                                  type="text"
-                                  className="form-control"
-                                  name="author"
-                                  placeholder="Author"
-                                  value={this.state.author}
-                                  onChange={this.onChange}/>
-                          </div>
-                          <div className="form-group">
-                              <label htmlFor="body">
-                                  Description
-                              </label>
-                              <textarea
-                                  type="text"
-                                  className="form-control"
-                                  name="body"
-                                  placeholder="Enter Post"
-                                  value={this.state.body}
-                                  onChange={this.onChange}/>
-                          </div>
+        //   <div className="d-flex justify-content-center">
+        //      <div className="d-flex justify-content-center">
+        //           <div className="col-md-6 mt-5">
+        //               <form noValidate onSubmit={this.onSubmit}>
+        //                   <h1 className="h3 mb-3 font-weight-normal">Add Article:</h1>
+        //                   <div className="form-group">
+        //                       <label htmlFor="title">
+        //                           Title:
+        //                       </label>
+        //                       <input
+        //                           type="text"
+        //                           className="form-control"
+        //                           name="title"
+        //                           placeholder="Title"
+        //                           value={this.state.title}
+        //                           onChange={this.onChange}/>
+        //                   </div>
+        //                   <div className="form-group">
+        //                       <label htmlFor="author">
+        //                           Author:
+        //                       </label>
+        //                       <input
+        //                           type="text"
+        //                           className="form-control"
+        //                           name="author"
+        //                           placeholder="Author"
+        //                           value={this.state.author}
+        //                           onChange={this.onChange}/>
+        //                   </div>
+        //                   <div className="form-group">
+        //                       <label htmlFor="body">
+        //                           Description
+        //                       </label>
+        //                       <textarea
+        //                           type="text"
+        //                           className="form-control"
+        //                           name="body"
+        //                           placeholder="Enter Post"
+        //                           value={this.state.body}
+        //                           onChange={this.onChange}/>
+        //                   </div>
 
-            <div className="field">
+        //     <div className="field">
+        //         <div className="label">Assign Article To:</div>
+        //             <div className="control">
+        //                 <select className="select" onChange={this.handleChange}>
+        //                     {this.state.users.map((user)=> 
+        //                         <option value={user._id}>{user.first_name}</option>
+        //                     )}
+        //                 </select>
+        //             </div>
+        //     </div> 
+
+        //                   <input type="file" onChange={(e) => this.handleFileUpload(e)} /> 
+
+        //                   <button type="submit" className="btn btn-lg btn-primary btn-block">
+        //                       Post
+        //                   </button>
+        //               </form>
+        //           </div>
+        //       </div>
+        //   </div>
+
+        <div className="center">
+        <div className="cardz">
+            <div className="col-md-10">
+            <form noValidate onSubmit={this.onSubmit}>
+                       <h1 className="h3 mb-3 font-weight-normal">Add Article:</h1>
+                          <div className="form-group">
+                               <label htmlFor="title" className="title">
+                                   Title:
+                          </label>
+                               <input
+                                   type="text"
+                                   className="form-item"
+                               name="title"
+                              placeholder="Title"
+                               value={this.state.title}
+                                   onChange={this.onChange}/>
+                           </div>
+                           <div className="form-group">
+                               <label htmlFor="author" className="author">
+                                   Author:
+                              </label>
+                              <div class="center-on-page">
+               <div className="label">Assign Article To:</div>
+                 <div className="select">
+                 <select name="slct" className="btn btn-lg btn-primary" id="slct" onChange={this.handleChange}>
+                         {this.state.users.map((user)=> 
+                                 <option value={user._id}>{user.first_name}</option>
+                             )}
+                </select>
+             </div>
+           </div>
+                              {/* <input
+                                   type="text"
+                                   className="form-item"
+                                  name="author"
+                                   placeholder="Author"
+                                   value={this.state.author}
+                                  onChange={this.onChange}/> */}
+                      </div>
+                      <div className="form-group">
+                               <label htmlFor="body" className="desc">
+                                   Description:
+                               </label>
+                               <textarea
+                              type="text"
+                                   className="form-item"
+                                  name="body"
+                                   placeholder="Enter Post"
+                                   value={this.state.body}
+                               onChange={this.onChange}/>
+                           </div>
+
+             {/* <div className="field">
                 <div className="label">Assign Article To:</div>
-                    <div className="control">
+                 <div className="control">
                         <select className="select" onChange={this.handleChange}>
                             {this.state.users.map((user)=> 
-                                <option value={user._id}>{user.first_name}</option>
-                            )}
+                                 <option value={user._id}>{user.first_name}</option>
+                             )}
                         </select>
-                    </div>
-            </div> 
+                     </div>
+             </div>  */}
 
-                          <input type="file" onChange={(e) => this.handleFileUpload(e)} /> 
+             <label class="custom-file-upload">
+             Image <FontAwesomeIcon icon={faUpload} />
+             <input type="file" className="btn btn-warning addPic" onChange={(e) => this.handleFileUpload(e)} /> 
+                  </label>
+       
+                     
+                         
 
-                          <button type="submit" className="btn btn-lg btn-primary btn-block">
+                           <button type="submit" className="btn btn-lg btn-primary btn-block">
                               Post
-                          </button>
-                      </form>
-                  </div>
-              </div>
-          </div>
+                           </button>
+                      </form> 
+            </div>
+        </div>
+    </div>
       )
   }
 }

@@ -31,6 +31,7 @@ body, html {
   position: relative;
  left: -300px;
  top: 10px;
+ color: white;
 }
 
 ul {
@@ -84,7 +85,12 @@ li {
 .logIn, .regIster {
   position: relative;
   left: 1100px;
+  color: white;
 } 
+
+.profile, .write, .read, .logout {
+  color: white;
+}
 
 
 .img-responsive {
@@ -107,12 +113,5 @@ li {
   position: relative;
   top: 200px;
 }
-
-/* .container {
-  position: relative;
-  width: 100%;
-  top:0px;
-  margin: 0px;
-} */
 
 

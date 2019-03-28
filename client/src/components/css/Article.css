@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+.center{
+    font-family: 'Raleway', sans-serif;
+    background-color: #1abc9c;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 140;
+   left: 0px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  position: relative;
+  top: 240px;
+}
+
+.title, .desc {
+  color: orange;
+}
+
+.cardz{
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 0.8rem;
+    height: 70%;
+    width: 50%;
+}
+
+.cardz > form{
+    display: flex;
+    flex-direction: column;
+}
+
+.cardz h1{
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+
+}
+
+.form-item{
+    font-family: 'Raleway', sans-serif;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 2rem;
+    height: 30px;
+    width: 100%;
+    /* width: 16rem; */
+    border: 1px solid grey;
+}
+
+.cardz textarea{
+  position: fixed;
+  height: 100px;
+  top: 420px;
+  left: 500px;
+  width: 30%;
+}
+
+.desc {
+  position: relative;
+  top: 90px;
+}
+
+.cardz button {
+  position: relative;
+  top: 250px;
+}
+
+.cardz .addPic {
+  position: relative;
+  top: 220px;
+}
+
+.cardz .author {
+  position: relative;
+  top: 10px;
+}
+
+.label {
+  position: relative;
+  top: 60px;
+}
+
+.form-submit{
+    font-family: 'Raleway', sans-serif;
+    height: 35px;
+    color: #fff;
+    background-color: #1abc9c;
+    border: none;
+    letter-spacing: 0.2rem;
+    transition: 0.3s opacity ease;
+    cursor: pointer;
+}
+.form-submit:hover{
+   opacity: 0.6;
+}
+
+
+
+.center-on-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+h1 {
+  text-align: center;
+}
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #2c3e50;
+  background-image: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: block;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: #2c3e50;
+  overflow: hidden;
+  border-radius: .25em;
+  top: 40px;
+}
+select {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+select::-ms-expand {
+  display: none;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 1em;
+  background: #34495e;
+  pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+.select::after {
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}

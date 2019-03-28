@@ -115,7 +115,7 @@ router.post('/', (req, res) => {
   const today = new Date();
   const newArticle = new Article({
     title: req.body.title,
-    author: req.body.author,
+    // author: req.body.author,
     body: req.body.body,
     imageUrl: req.body.imageUrl,
     owner: req.body.userId, //  -> watch out with this(causes problems?

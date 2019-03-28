@@ -4,6 +4,11 @@
   top: 200px;
 }
 
+.faSearch {
+  position: relative;
+  top: 25px;
+  left: 160px;
+}
 
 span {
   position: relative;

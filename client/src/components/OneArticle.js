@@ -31,7 +31,7 @@ class OneArticle extends Component {
         let userToken = localStorage.usertoken
         const {_id} = jwt_decode(userToken)
         debugger;
-        this.setState({ article: res.data, userId:_id, first_name:res.data.owner.first_name, articleOwnerId:res.data.owner._id})
+        this.setState({ article: res.data, userId:_id, articleOwnerId:res.data.owner._id})
            console.log(res.data.owner.first_name);
            console.log(this.state.article);
       }).catch(err => {
@@ -40,9 +40,14 @@ class OneArticle extends Component {
         console.log(err)
       })
 
-      axios.get(`/users/one/:id`, {withCredentials:true})
+      axios.get(`/users/one/:id`, {withCredentials:true})  
       .then((response)=> {
-          this.setState({owner: response.data.id, first_name:response.data.owner.first_name})
+        let userToken = localStorage.usertoken;
+        const {first_name} = jwt_decode(userToken);
+        console.log(first_name);
+        this.setState({owner: response.data.id, first_name: first_name})
+          // this.setState({owner: response.data.id, first_name:response.data.owner.first_name})
+          console.log(this.state.owner);
           debugger
           console.log(response.data.id)
           debugger

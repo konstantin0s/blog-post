@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './css/ShowArticles.css';
 import Moment from "moment";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function searchingFor(term) {
   return function(x) {
@@ -39,7 +41,7 @@ class ShowArticles extends Component {
     return ( 
   <div className="container showArticles">
        <form className="active-pink active-pink-2">
-  <i className="fas fa-search" aria-hidden="true"></i>
+  <FontAwesomeIcon className="faSearch" icon={faSearch} />
   <input onChange={this.searchHandler} className="form-item" type="text" placeholder="Search" aria-label="Search" />
 </form>
 				

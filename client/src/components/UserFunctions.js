@@ -35,7 +35,7 @@ export const login = user => {
 export const articles = newArticle => {
   return axios.post('/articles', {
     title: newArticle.title,
-    author: newArticle.author,
+    // author: newArticle.author,
     body: newArticle.body,
     imageUrl: newArticle.imageUrl,
     userId: newArticle.userId
