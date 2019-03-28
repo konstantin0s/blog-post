@@ -45,31 +45,20 @@ class ShowArticles extends Component {
   <input onChange={this.searchHandler} className="form-item" type="text" placeholder="Search" aria-label="Search" />
 </form>
 				
-      {/* <form>
-     <input className="form-item" placeholder="Search Blog..." type="text" 
-       onChange={this.searchHandler}
-     />
-     <i class="fas fa-search" aria-hidden="true"> </i>
-   </form> */}
-
-
 {this.state.filtered.filter(searchingFor(this.state.term)).map((article) =>    
 
  
 
 <div className="card text-center">
-  {/* <div className="card-header">
-    Read about Personal Development.
-  </div> */}
   <div className="card-body">
     <h2 className="card-title">{article.title}</h2>
     <p className="card-text">You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words:
     'Yes, we went to school in the sea, though you mayn't believe it—'
      'I never said I didn't!' interrupted Alice.
      'You did,' said the Mock Turtle.</p>
-    <Link className="btn btn-primary linkz" to={`/show/${article._id}`}>Read MORE...</Link>
 
   </div>
+   <span className="artLink">  <Link className="btn btn-primary linkz" to={`/show/${article._id}`}>Read MORE...</Link></span>
   <div className="card-footer text-muted">
    <span> Posted: {Moment(article.date.dateFrom).format('YYYY-MM-DD')}</span>
   </div>

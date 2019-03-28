@@ -17,6 +17,7 @@ class OneArticle extends Component {
     owner: "",
     id: "",
     first_name: "",
+    
     like: false,
     likes: 0
     }
@@ -31,7 +32,7 @@ class OneArticle extends Component {
         let userToken = localStorage.usertoken
         const {_id} = jwt_decode(userToken)
         debugger;
-        this.setState({ article: res.data, userId:_id, articleOwnerId:res.data.owner._id})
+        this.setState({ article: res.data, userId:_id, first_name:res.data.owner.first_name, articleOwnerId:res.data.owner._id})
            console.log(res.data.owner.first_name);
            console.log(this.state.article);
       }).catch(err => {
@@ -43,9 +44,8 @@ class OneArticle extends Component {
       axios.get(`/users/one/:id`, {withCredentials:true})  
       .then((response)=> {
         let userToken = localStorage.usertoken;
-        const {first_name} = jwt_decode(userToken);
-        console.log(first_name);
-        this.setState({owner: response.data.id, first_name: first_name})
+        // const {first_name} = jwt_decode(userToken);
+        this.setState({owner: response.data.id})
           // this.setState({owner: response.data.id, first_name:response.data.owner.first_name})
           console.log(this.state.owner);
           debugger
@@ -166,21 +166,25 @@ class OneArticle extends Component {
      
     debugger
     return (
+
+
                
       <div className="jumbotron">
       <div className="oneArticle">
        {buttons}  
       </div>
-      <h1>{this.state.article.title}</h1>
+     
               <img className="rounded float-left img-responsive" alt="Article" src={this.state.article.imageUrl} />
                <div className="bodys">
-              <p className="body-text">{this.state.article.body}</p>
-              <span className="badge post">Posted 
-           {Moment(this.state.article.date).format('YYYY-MM-DD')}
+               <div className="jumbo"> <h1>{this.state.article.title}</h1></div>
+              <span className="postz">  On </span>
+          <span className="date">  {Moment(this.state.article.date).format('YYYY-MM-DD')}
              </span>
 
-              <h4>Written by: <div className="author">{this.state.article.author}</div></h4>
+              <h4>Posted by: </h4>
+              <div className="author">{this.state.article.owner? this.state.article.owner.first_name: ""}</div>
               </div>
+              <p className="body-text">{this.state.article.body}</p>
             {this.showCommentBox()}
              <div className="row">
             {this.showComments()}
@@ -188,11 +192,11 @@ class OneArticle extends Component {
 
            <div className="pull-right"><span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>
              <span className="label label-danger">Danger</span>
-               <div className="edel"> 
-              </div>
+               {/* <div className="edel"> 
+              </div> */}
            <hr/>
             </div>   
-           </div>
+           </div> 
 
     );
   }

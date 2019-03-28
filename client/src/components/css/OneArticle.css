@@ -1,36 +1,48 @@
-.bodys .post {
-  position: relative;
-  top: -40px;
-  right: 350px;
-  margin-bottom: 40px;
-  color: orange;
-  background-color: white;
+body {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 22px;
+} 
+
+ .postz {
+  position: relative;
+  top: 278px;
+  right: -50px;
+  margin-bottom: 40px;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;  
 }
 
-/* .badge {
-  position: absolute;
-  top: -250px;
-  right: 350px;
+ .date{
+   position: relative;
+  top: 278px;
+  right: -50px;
   margin-bottom: 40px;
-} */
+  color: white;
+  font-size: 24px;
+ }
+
+ .pull-right hr {
+  position: relative;
+  top: 10px;
+  left: 0px;
+ }
 
 .pull-right {
   position: absolute;
-  top: 710px;
+  top: 960px;
+  left: 750px;
 }
 
 .author {
  display: flex;
   flex-direction: row; 
   margin-left: 10px; 
-  position: absolute; 
-  top: 0px;
-  left: 100px;
+  position: relative; 
+  top: 199px;
+   left: 780px;
   text-transform: uppercase;
-  color: orange;
-  background-color: white;
+  color: white;
+  font-size: 24px;
 }
 
 .oneArticle  {
@@ -39,8 +51,14 @@
   align-items: center;
   width: 100%; 
   position: relative;
-  top: 100px;
-  left: 500px;
+  top: 500px;
+  left: 800px;
+
+}
+
+.image-responsive {
+  position: absolute;
+  top: 10px;
 }
 
 .body-text {
@@ -49,16 +67,26 @@
   flex-direction: column;
   align-items: center;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 22px;
+  font-size: 24px;
   text-transform: capitalize;
-  top:  80px;
+  top:  440px;
+  width: 70%;
+  left: 250px;
+  height: 400px;
   margin-bottom: 150px;
+  /* background-color: white; */
 }
 
-.jumbotron h1 {
-  position: relative;
-  top: -50px;
+.jumbo h1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 70px;
+  left: 180px;
   text-transform: capitalize;
+  color: white;
+  transform: translate(100%, -10%);
   /* border-bottom: 1px solid white; */
 }
 
@@ -73,22 +101,24 @@
   top: -50px;
 }
 
+
 .oneArticle span {
   position: relative;
   top: 60px;
 }
+
 .bodys h4 {
-  display: flex;
-  flex-direction: row;
-  display: inline-block;
+
   position: relative;
-  top: -60px;
-  color: orange;
-  background-color: white;
-  
+  top: 238px;
+  color: white;
+  left: -200px;
+  font-size: 24px;
 }
 
 .callout.secondary {
+  position: relative;
+  top: 280px;
   margin-top: 120px;
   margin-bottom: 80px;
   background: #222;
@@ -171,12 +201,18 @@ textarea {
   font-size:1.2rem;
 }
 
+.post-footer hr {
+  position: relative;
+  top: -74px;
+}
+
 .post-footer-comment-wrapper{
   background-color:#F6F7F8;
 }
 
 .showComm {
   position: relative;
+  top: 300px;
   transform: translate(28%, 32%);
   left: -130px;
 }
@@ -187,3 +223,12 @@ textarea {
   top:50px;
   margin: 0px;
 }
+
+.jumbotron .rounded {
+  position: absolute;
+  top: 0px;
+}
+
+ul>li{
+  position:relative;
+   }  

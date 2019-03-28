@@ -112,8 +112,8 @@ class Login extends Component {
                                     onChange={this.onChange}/>
                             </div>
                             <div style={{ fontSize: 12, color: "red"}}>{this.state.passwordError}</div>
-                            <button type="submit" className="form-submit btn btn-lg btn-primary btn-block">
-                                Sign in
+                            <button type="submit" className="btn btn-lg btn-primary btn-block">
+                                Sign In
                             </button>
                         </form>
                     </div>

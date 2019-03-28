@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import store from 'store';
 
@@ -9,9 +8,12 @@ export const register = newUser => {
     email: newUser.email,
     password: newUser.password,
        
-  })
+  }, {withCredentials: true})
   .then(res => {
     console.log('Registered!, now what? I am from UserFunctions');
+  })
+  .catch(err => {
+    console.log(err)
   })
 }
 

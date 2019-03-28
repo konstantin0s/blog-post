@@ -100,12 +100,12 @@ router.get('/', (req, res) => {
   // });
     
     
-  // router.get('/one/:id', (req, res, next) => {
-  //   debugger
-  //   return res.json({
-  //     article: req.article.toJSON(),
-  //   });
-  // })
+  router.get('/one/:id', (req, res, next) => {
+    debugger
+    return res.json({
+      article: req.article.toJSON(),
+    });
+  })
 
 
 

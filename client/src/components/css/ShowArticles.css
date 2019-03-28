@@ -44,6 +44,15 @@ span {
   text-decoration: none;
 }
 
+.active-pink {
+  position: relative;
+  top: -100px;
+}
+
+.active-pink2 input{
+ background-color: #72A4D2;
+}
+
 .active-pink-2 input[type=text]:focus:not([readonly]) {
   border-bottom: 1px solid #f48fb1;
   box-shadow: 0 1px 0 0 #f48fb1;
@@ -73,26 +82,38 @@ span {
   top: -100px;
   position: relative;
   transform: translate(17%,40%);
+  margin-bottom: 100px;
+}
+
+.text-center .artLink {
+  position: relative;
+  top: -140px;
+  margin-top: -10px;
 }
 
 .card-text {
   font-size: 23px;
-  margin: 50px 0;
+  margin: 20px 0;
+  margin-bottom: 100px;
 }
 
 .card-title {
 text-transform: capitalize;
+margin: 20px 0;
+margin-bottom: 100px;
 }
 
 .card-footer span {
    position: relative;
    top: -135px;
+   font-size: 18px;
+   font-family: italic;
 }
 
 .badges {
   position: relative;
-  top: 70px;
-  margin: 20px 0;
+  top: 100px;
+  margin: 50px 0;
 }
 
 hr {
@@ -100,5 +121,11 @@ hr {
   top: 130px;
   border-bottom: 1px solid grey;
 }
+
+/* .hrTitle {
+  position: relative;
+  top: -95px;
+  border-bottom: 1px solid grey;
+} */
 
 
