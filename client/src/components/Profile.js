@@ -6,21 +6,7 @@ import axios from 'axios';
 
 
 class Profile extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     user: {}
-  //   };
-  // }
 
-  // componentDidMount() {
-  //   axios.get('/one/'+this.props.match.params.id)
-  //     .then(res => {
-  //       this.setState({ user: res.data.user });
-  //       console.log(this.state.user);
-  //     });
-  // }
-	
 	constructor(props) {
     super(props);
     this.state = {

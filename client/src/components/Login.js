@@ -66,8 +66,7 @@ class Login extends Component {
         login(user).then(res => {
             if (res) {
                  console.log(user);
-                // this.props.getUser(res);
-                // this.props.loggedIn({loggedIn: true});
+
                 this.props.history.push('/articles');
             }
         })

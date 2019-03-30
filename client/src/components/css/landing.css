@@ -1,3 +1,158 @@
 .whoops-404 {
   display: none;
 }
+
+.headerImg {
+  position: relative;
+  width: 100%;
+  top: -120px;
+}
+
+/* .site-heading h1{
+  color: white;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+} */
+
+.site-heading span{
+  color: white;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  top: 50px;
+}
+
+.px-0 h1 {
+  color: white;
+  top: 80px;
+
+}
+
+
+.px-0 .my-3, .mb-0{
+  color: black;
+    top: 80px;
+   position: relative;
+}
+
+.px-0 .user {
+ top: -10px;
+   position: relative;
+   float: left;
+   left: 340px;
+}
+
+.px-0 hr {
+  /* float: left; */
+  left: -220px;
+  position: relative;
+  top: 70px;
+}
+
+.card-img-right {
+  position: relative;
+   height: 350px;
+   width: 550px;
+   left: 90px;
+   top: 66px;
+}
+
+.continue {
+   top: 140px;
+   position: relative;
+   float: right;
+   right: 430px;
+}
+
+.px-0 img {
+  position: relative;
+  top: 110px;
+ left: -80px;
+}
+
+.card-body hr {
+  position:relative;
+  top: -100px;
+
+}
+
+.card-body .linkz {
+  position: relative;
+  top: 100px;
+}
+
+
+.card-body .botto {
+  position: relative;
+  left: 100px;
+}
+
+.align-items-start {
+  position: relative;
+  top: 34px;
+}
+.align-items-start {
+color: white;
+top: 10px;
+}
+
+
+.align-items-start .jaja {
+  position: relative;
+  top: -35px;
+  color: black
+}
+
+.align-items-start {
+   position: relative;
+   top: -10px;
+}
+
+.blog-footer {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+ top: 600px;
+  position: relative;
+  left: 500px; 
+  bottom: 0;
+  height: 30%;
+  width: 40%;
+
+}
+
+.card-second {
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+ top: 200px;
+  position: relative; 
+  height: 30%;
+}
+
+.linkz {
+  position: absolute;
+  font-weight: 200;
+  font-size: 20px;
+  top: 280px;
+  margin: 10px 0;
+}
+
+.linkz:link {
+  text-decoration: none;
+}
+
+.card .sec {
+   position: relative;
+   top: -64px;
+}
+
+/* .card-second img {
+  position: relative;
+  top: 100px;
+  width: 50%;
+  height: 400px;
+} */

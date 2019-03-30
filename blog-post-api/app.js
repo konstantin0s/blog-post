@@ -8,12 +8,13 @@ const MongoStore = require("connect-mongo")(session);
 const cookieParser = require('cookie-parser');
 const passport      = require('passport');
 const multer = require('multer');
+require("dotenv").config();
 
-// require('./configs/passport');
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/build')));
 
 app.use(express.json());
 app.use(cors({
@@ -28,8 +29,8 @@ app.use(cors({
   app.use(cookieParser());
 
 
-  mongoose 
-  .connect('mongodb://localhost:27017/blogpost', {useNewUrlParser: true})
+mongoose 
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -76,12 +77,6 @@ app.use(cors({
   // const Articles = require('./routes/Articles');
   app.use('/articles', require('./routes/Articles'));
   app.use('/', require('./routes/file-upload-routes'));
-  // app.use('/', require("./routes/Comments"));
-
-// app.get('/', (req, res, next) => {
-//   res.json(users);
-//   res.render('index')
-// });
 
 app.listen(3001, ()=> {
   console.log("listening")

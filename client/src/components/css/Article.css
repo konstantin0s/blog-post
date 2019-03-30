@@ -13,6 +13,14 @@
    left: 0px;
 }
 
+.auth .author {
+  position: relative;
+  top: 100px;
+  left: 80px;
+  color: orange;
+  font-size: 18px;
+}
+
 input[type="file"] {
   display: none;
 }
@@ -64,7 +72,7 @@ input[type="file"] {
 .cardz textarea{
   position: fixed;
   height: 100px;
-  top: 420px;
+  top: 450px;
   left: 500px;
   width: 30%;
 }

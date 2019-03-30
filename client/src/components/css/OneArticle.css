@@ -1,24 +1,27 @@
 body {
   font-family: 'Courier New', Courier, monospace;
+  background-color: #fff;
 } 
 
  .postz {
   position: relative;
-  top: 278px;
-  right: -50px;
+  top: 288px;
+  right: -100px;
   margin-bottom: 40px;
   color: white;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 24px;  
+  font-size: 30px;  
+  font-weight: 400;
 }
 
  .date{
    position: relative;
-  top: 278px;
-  right: -50px;
+  top: 288px;
+  right: -90px;
   margin-bottom: 40px;
   color: white;
-  font-size: 24px;
+  font-size: 30px;
+  font-weight: 400;
  }
 
  .pull-right hr {
@@ -29,8 +32,8 @@ body {
 
 .pull-right {
   position: absolute;
-  top: 960px;
-  left: 750px;
+  top: 180px;
+  left: 500px;
 }
 
 .author {
@@ -38,19 +41,29 @@ body {
   flex-direction: row; 
   margin-left: 10px; 
   position: relative; 
-  top: 199px;
-   left: 780px;
+  top: 192px;
+   left: 770px;
   text-transform: uppercase;
-  color: white;
-  font-size: 24px;
+  color: orange;
+  font-weight: 400;
+  font-size: 30px;
 }
+
+.media-body h4, a {
+  color: black;
+}
+
+.post-heading {
+  color: black;
+}
+
 
 .oneArticle  {
  display: flex;
   flex-direction: column; 
   align-items: center;
   width: 100%; 
-  position: relative;
+  position: absolute;
   top: 500px;
   left: 800px;
 
@@ -62,7 +75,7 @@ body {
 }
 
 .body-text {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,10 +96,13 @@ body {
   align-items: center;
   position: absolute;
   top: 70px;
-  left: 180px;
+  left: 40px;
+  width: 40%;
   text-transform: capitalize;
   color: white;
-  transform: translate(100%, -10%);
+  font-size: 40px;
+  font-weight: 600;
+  transform: translate(30%, -10%);
   /* border-bottom: 1px solid white; */
 }
 
@@ -111,14 +127,16 @@ body {
 
   position: relative;
   top: 238px;
+  left: -230px;
+  font-weight: 400;
   color: white;
-  left: -200px;
-  font-size: 24px;
+  font-size: 30px;
+  font-weight: 400;
 }
 
 .callout.secondary {
   position: relative;
-  top: 280px;
+  top: 1100px;
   margin-top: 120px;
   margin-bottom: 80px;
   background: #222;
@@ -212,9 +230,10 @@ textarea {
 
 .showComm {
   position: relative;
-  top: 300px;
-  transform: translate(28%, 32%);
-  left: -130px;
+  top: 1080px;
+  left: -320px;
+  height: 70%;
+  transform: translate(45%, 32%);
 }
 
 .jumbotron {
@@ -232,3 +251,15 @@ textarea {
 ul>li{
   position:relative;
    }  
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+ top: 1300px;
+  position: relative; 
+  bottom: 0;
+  height: 30%;
+  left: 20px;
+}

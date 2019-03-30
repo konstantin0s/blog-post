@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import './css/OneArticle.css';
 import jwt_decode from 'jwt-decode';
 import Moment from 'moment';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub }  from '@fortawesome/free-brands-svg-icons' 
+import { faFacebook } from '@fortawesome/free-brands-svg-icons' 
+import { faTwitter } from '@fortawesome/free-brands-svg-icons' 
 
 let $this; 
 class OneArticle extends Component {
@@ -172,11 +177,12 @@ class OneArticle extends Component {
       <div className="jumbotron">
       <div className="oneArticle">
        {buttons}  
-      </div>
+      </div>    
      
               <img className="rounded float-left img-responsive" alt="Article" src={this.state.article.imageUrl} />
                <div className="bodys">
-               <div className="jumbo"> <h1>{this.state.article.title}</h1></div>
+               <div className="jumbo"> <h1>{this.state.article.title}</h1>
+           
               <span className="postz">  On </span>
           <span className="date">  {Moment(this.state.article.date).format('YYYY-MM-DD')}
              </span>
@@ -189,13 +195,46 @@ class OneArticle extends Component {
              <div className="row">
             {this.showComments()}
                </div>
-
-           <div className="pull-right"><span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>
-             <span className="label label-danger">Danger</span>
-               {/* <div className="edel"> 
-              </div> */}
-           <hr/>
             </div>   
+            <footer>
+    <div className="container footer">
+      <div className="row">
+        <div className="col-lg-8 col-md-10 mx-auto">
+          <ul className="list-inline text-center">
+            <li className="list-inline-item">
+              <a href="#">
+                <span className="fa-stack fa-lg">
+              <FontAwesomeIcon className="faTwitter" icon={faTwitter} />
+                </span>
+              </a>
+            </li>
+            <li className="list-inline-item">
+              <a href="#">
+                <span className="fa-stack fa-lg">
+                  <i className="fas fa-circle fa-stack-2x"></i>
+                    <FontAwesomeIcon className="faFacebook" icon={faFacebook} />
+                </span>
+              </a>
+            </li>
+            <li className="list-inline-item">
+              <a href="#">
+                <span className="fa-stack fa-lg">
+                   <FontAwesomeIcon className="faGithub" icon={faGithub} />
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p className="copyright text-muted">Copyright &copy; YouHelp 2019</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div className="pull-right"><span className="label label-default">alice</span> <span className="label label-primary">story</span> <span className="label label-success">blog</span> <span className="label label-info">personal</span> <span className="label label-warning">Warning</span>
+                <span className="label label-danger">Danger</span>
+           <hr/>
+               </div>
+
            </div> 
 
     );
