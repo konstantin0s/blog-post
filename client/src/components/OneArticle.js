@@ -87,7 +87,7 @@ class OneArticle extends Component {
   showCommentBox() {
     if (this.state.userId != "") {
       return          <div className="callout secondary">
-      <h4 className="leave-comment">Add a Comment</h4>
+      <h4 className="leave-comment">Add a Comment:</h4>
       <form className="post-edit" ref="commentForm" onSubmit={e => this.saveComments(e)}>
         <textarea id="comment" className="form-comtrol" placeholder="Share your thoughts" required/> <br />
         <button id="submit" type="submit" className="btn btn-primary btn btn-outline comment-btn action-btn expand-right">Post Comment</button>
@@ -110,7 +110,7 @@ class OneArticle extends Component {
                                   <div className="col-md-11">
                                       <div className="media">
                                         <div className="media-body">
-                                          <a href="#" className="anchor-username"><h4 className="media-heading">Username: {c.owner.first_name}</h4></a> 
+                                          <a href="#" className="anchor-username"><h3 className="media-heading">Username: {c.owner.first_name}</h3></a> 
                                           <a href="#" className="anchor-time">51 mins</a>
                                         </div>
                                       </div>
@@ -182,13 +182,14 @@ class OneArticle extends Component {
               <img className="rounded float-left img-responsive" alt="Article" src={this.state.article.imageUrl} />
                <div className="bodys">
                <div className="jumbo"> <h1>{this.state.article.title}</h1>
-           
+               <div className="ilPost">
               <span className="postz">  On </span>
           <span className="date">  {Moment(this.state.article.date).format('YYYY-MM-DD')}
              </span>
-
+                
               <h4>Posted by: </h4>
               <div className="author">{this.state.article.owner? this.state.article.owner.first_name: ""}</div>
+                 </div>
               </div>
               <p className="body-text">{this.state.article.body}</p>
             {this.showCommentBox()}

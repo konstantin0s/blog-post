@@ -98,14 +98,16 @@ span {
   margin-bottom: 100px;
 }
 
-.card-title {
+.titleOf {
 text-transform: capitalize;
 margin: 20px 0;
 margin-bottom: 140px;
 width: 100%;
+height: 50px;
 }
 
-.card-footer span {
+.card-footer p {
+   margin-top: 25px;
    position: relative;
    top: -135px;
    font-size: 18px;

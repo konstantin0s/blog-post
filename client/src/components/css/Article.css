@@ -3,7 +3,7 @@
 .center{
     font-family: 'Raleway', sans-serif;
     background-color: #1abc9c;
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     display: flex;
@@ -31,7 +31,7 @@ input[type="file"] {
   padding: 6px 12px;
   cursor: pointer;
   position: relative;
-  top: 240px;
+  top: 340px;
 }
 
 .title, .desc {
@@ -72,24 +72,24 @@ input[type="file"] {
 .cardz textarea{
   position: fixed;
   height: 100px;
-  top: 450px;
-  left: 500px;
-  width: 30%;
+  top: 550px;
+  left: 630px;
+  width: 25%;
 }
 
 .desc {
   position: relative;
-  top: 90px;
+  top: 120px;
 }
 
 .cardz button {
   position: relative;
-  top: 250px;
+  top: 356px;
 }
 
 .cardz .addPic {
   position: relative;
-  top: 220px;
+  top: 280x;
 }
 
 .cardz .author {

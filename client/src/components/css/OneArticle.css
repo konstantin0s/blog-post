@@ -8,7 +8,7 @@ body {
   top: 288px;
   right: -100px;
   margin-bottom: 40px;
-  color: white;
+  color: orange;
   font-family: 'Courier New', Courier, monospace;
   font-size: 30px;  
   font-weight: 400;
@@ -19,7 +19,7 @@ body {
   top: 288px;
   right: -90px;
   margin-bottom: 40px;
-  color: white;
+  color: orange;
   font-size: 30px;
   font-weight: 400;
  }
@@ -42,7 +42,7 @@ body {
   margin-left: 10px; 
   position: relative; 
   top: 192px;
-   left: 770px;
+  left: 1095px;
   text-transform: uppercase;
   color: orange;
   font-weight: 400;
@@ -51,6 +51,19 @@ body {
 
 .media-body h4, a {
   color: black;
+}
+
+.media-body h4 {
+  color: black;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.media-heading {
+  color: orange;
+  text-decoration: none;
 }
 
 .post-heading {
@@ -65,7 +78,7 @@ body {
   width: 100%; 
   position: absolute;
   top: 500px;
-  left: 800px;
+  left: 950px;
 
 }
 
@@ -82,12 +95,19 @@ body {
   font-family: 'Courier New', Courier, monospace;
   font-size: 24px;
   text-transform: capitalize;
-  top:  440px;
+  top:  640px;
   width: 70%;
   left: 250px;
-  height: 400px;
+  height: 50%;
+  /* height: 400px; */
   margin-bottom: 150px;
   /* background-color: white; */
+}
+
+.ilPost {
+ position: relative;
+ top: 200px;
+ color: orange;
 }
 
 .jumbo h1{
@@ -99,7 +119,7 @@ body {
   left: 40px;
   width: 40%;
   text-transform: capitalize;
-  color: white;
+  color: orange;
   font-size: 40px;
   font-weight: 600;
   transform: translate(30%, -10%);
@@ -123,16 +143,24 @@ body {
   top: 60px;
 }
 
+
 .bodys h4 {
 
   position: relative;
   top: 238px;
   left: -230px;
   font-weight: 400;
-  color: white;
+  color: orange;
   font-size: 30px;
   font-weight: 400;
 }
+
+.secondary h4{
+  position: relative;
+  top: -60px;
+  left: 15px;
+}
+
 
 .callout.secondary {
   position: relative;
