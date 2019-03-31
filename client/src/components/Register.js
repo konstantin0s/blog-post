@@ -7,7 +7,8 @@ const initialState = {
     first_name: '',
     last_name: '',
     email: '',
-    password: ''
+    password: '',
+    error: false
 }
 
 

@@ -23,7 +23,7 @@ export const login = user => {
     password: user.password
   },  {withCredentials: true})
   .then(res => {
-    debugger
+    // debugger
     localStorage.setItem('usertoken', res.data)
     console.log(res.data);
     // localStorage.setItem('refreshToken', res.data)

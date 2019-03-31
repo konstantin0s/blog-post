@@ -11,14 +11,14 @@ const User = require('../models/User');
 //@desc All Articles
 //@access Public
 router.get('/', (req, res) => {
-  debugger
+   
   Article.find()
   .sort({ date: -1 })
   .then(articles => res.json(articles));
     });
 
     router.get('/:userId/', (req, res) => {
-      debugger
+       
       Article.find({user: req.query.userId})
       .then(articles =>{
           res.json(articles);
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 
 
     router.get('/', (req, res, next) => {
-      debugger
+       
       return Article.find()
       .populate('owner')
         .sort({ createdAt: 'descending' })
@@ -39,79 +39,40 @@ router.get('/', (req, res) => {
         .catch(next);
     });
     
-    // router.param('id', (req, res, next, id) => {
-    //   console.log("hellooooooo")
+    router.param('id', (req, res, next, id) => {
+      console.log("hellooooooo")
 
-    //   debugger
-    //   return Article.findById(id, (err, article) => {
-    //     if(err) {
-    //       return res.sendStatus(404);
-    //     } else if(article) {
-    //       req.article = article;
-    //       return next();
-    //     }
-    //   }).catch(next);
-    // });
+       
+      return Article.findById(id, (err, article) => {
+        if(err) {
+          return res.sendStatus(404);
+        } else if(article) {
+          req.article = article;
+          return next();
+        }
+      }).catch(next);
+    });
     
     router.get("/one/:id", (req,res)=> {
-      debugger
+       
       Article.findById(req.params.id)
         .populate("owner")
         .populate('comments.owner', 'first_name')
         .then((result)=>{
-          debugger
+           
           res.status(200).json(result)
         })
         .catch((error)=> {
           res.status(500).json(error)
-          debugger
+           
         })
     })
     
-    // router.get("/:id", (req,res)=> {
-    //   Article.findById(req.params.id)
-    //     .populate("owner")
-    //     .then((res)=>{
-    //       res.json({
-    //               article: req.article.toJSON(),
-    //                     })
-    //     })
-    //     .catch((error)=> {
-    //       res.json(error)
-    //     })
-    // })
-    
-
-  //   router.get('/:id', (req, res, next) => {
-  //     debugger
-  //     Article.findByIdAndUpdate(req.params.id, req.body)
-  //     .populate("owner")
-  //     .then((res) => {
-  //       res.json({
-  //           article: req.article.toJSON(),
-  //     })
-  //     .catch(err => {
-  //       res.json(err);
-  //     })
-  //     // return res.json({
-  //     //   article: req.article.toJSON(),
-  //     // });
-  //   });
-  // });
-    
-    
-  // router.get('/one/:id', (req, res, next) => {
-  //   debugger
-  //   return res.json({
-  //     article: req.article.toJSON(),
-  //   });
-  // })
-
 
 
 //add submit POST route
 router.post('/', (req, res) => {
-  debugger
+   
   const today = new Date();
   const newArticle = new Article({
     title: req.body.title,
@@ -121,10 +82,10 @@ router.post('/', (req, res) => {
     owner: req.body.userId, //  -> watch out with this(causes problems?
     created: today
   }); 
-  debugger
+   
    newArticle.save().then(article => res.json(article))
    .catch(err => {
-    debugger
+     
     res.json(err);
     })
 });
@@ -138,7 +99,7 @@ router.post('/savecomment', (req, res, next) => {
 
   Article.findByIdAndUpdate(id)
   .exec((err, article) => {
-  
+    
     if (err) res.status(500).json(err)
     article.comment({owner: req.session.currentUser, text: request.text})
     .then((savedcomment)=>{
@@ -146,7 +107,7 @@ router.post('/savecomment', (req, res, next) => {
       .populate("owner")
       .populate('comments.owner', 'first_name')
       .exec().then(newArticle => {
-      
+       
         res.status(200).json(newArticle)
 
       })
@@ -231,12 +192,12 @@ router.post('/savecomment', (req, res, next) => {
 
 //Edit single Article
 router.put('/one/:id', function(req, res, next) {
-  debugger
+  
   Article.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
-    debugger
+     
     if (err) return next(err);
     res.json(post);
-    debugger
+     
   });
 });
 

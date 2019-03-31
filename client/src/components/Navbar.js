@@ -3,7 +3,6 @@ import { withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import store from 'store';
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPeopleCarry } from '@fortawesome/free-solid-svg-icons'
 
@@ -33,7 +32,6 @@ class Navbar extends Component {
        store.remove('loggedIn');
        console.log('you have been logged out. boo!');
        this.props.history.push('/')
-      //  store.set('loggedIn', false);
      }
 
      

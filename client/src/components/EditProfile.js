@@ -80,10 +80,6 @@ class EditProfile extends Component {
                 <label for="description">Email:</label>
                 <input type="text" class="form-control" name="email" value={this.state.user.email} onChange={this.onChange} placeholder="Email" />
               </div>
-              {/* <div class="form-group">
-                <label for="description">Password:</label>
-                <input type="text" class="form-control" name="password" value={this.state.user.password} onChange={this.onChange} placeholder="Password" />
-              </div> */}
 
               {/* <input type="file" onChange={(e) => this.handleFileUpload(e)} />  */}
               <button type="submit" className="btn btn-lg btn-primary btn-block">

@@ -14,18 +14,8 @@ users.use(cors({
   origin: ['http://localhost:3001']
 }));
 
-// const protect = (req, res, next)=> {
-//   debugger
-//   if(req.session.currentUser) {
-//     next()
-//   } else {
-//     res.status(403).json({message: "Unauthorized"})
-//   }
-// }
 
-// process.env.SECRET_KEY = 'secret';
 users.get('/one/:id', (req, res, next) => {
-  //console.log(req.params.id); // this is print our id parameter
 
   // lets do this
   const userid = req.params.id;
@@ -35,7 +25,7 @@ users.get('/one/:id', (req, res, next) => {
           else if (!user)
               res.send(404)
           else
-              res.send(user)
+          res.status(200).json(user);
           next()            
       })
 })
@@ -76,7 +66,7 @@ users.get('/', (req, res) => {
 users.put('/:id', function(req, res, next) {
   User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
     if (err) return next(err);
-    res.json(user);
+    res.status(200).json(user);
   });
 });
 
@@ -84,35 +74,36 @@ users.put('/:id', function(req, res, next) {
 users.get('/:id', function(req, res, next) {
   User.findById(req.params.id)
     .then((user)=>{
-      res.json(user)
+      res.status(200).json(user);
+       
     })
     .catch((error)=> {
-      res.json(error)
+      res.status(500).json(error)
     })
 });
 
 users.get('/:id', function(req, res, next) {
   User.findById(req.params.id)
     .then((user)=>{
-      res.json(user)
-
+      res.status(200).json(user);
+   
     })
     .catch((error)=> {
-      res.json(error)
+      res.status(500).json(error)
     })
 });
 
-// users.get('/one/:id', function(req, res, next) {
-//   User.findById(req.params.id)
-//     .then((user)=>{
-//       debugger
-//       res.json(user)
-//       debugger
-//     })
-//     .catch((error)=> {
-//       res.json(error)
-//     })
-// });
+users.get('/one/:id', function(req, res, next) {
+  User.findById(req.params.id)
+    .then((user)=>{
+       
+      res.json(user)
+       
+    })
+    .catch((error)=> {
+    res.status(500).json(error)
+    })
+});
 
 
 
@@ -199,7 +190,7 @@ users.get('/profile', (req, res) => {
   })
   .then(user => {
     if (user) {
-      res.json(user)
+      res.status(200).json(user);
     } else {
       res.send('User does not exist')
     }
@@ -215,10 +206,10 @@ users.post("/:id", (req,res)=> {
   User.findById(req.params.id)
     .populate("articles")
     .then((results)=>{
-      res.json(results)
+      res.status(200).json(results);
     })
     .catch((error)=> {
-      res.json(error)
+      res.status(500).json(error)
     })
 })
 

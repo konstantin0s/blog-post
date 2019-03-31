@@ -27,7 +27,6 @@ class Article extends Component {
      axios.get(`/users/`, {withCredentials:true})
     .then((response)=> {
         this.setState({users: response.data, userId: response.data[0]._id})
-        debugger
         console.log(response.data)
     })
     .catch((error)=> {

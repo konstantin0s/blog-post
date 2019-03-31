@@ -21,27 +21,33 @@ class Landing extends Component {
   </header>
 
 
-
+  <div className="row mb-2 zeroCard">
         <div className="col-md-6 px-0">
-          <h1 className="display-4 font-italic">Title of a longer featured blog post</h1>
-          <p className="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
+          <h1 className="display-4 font-italic">How to Stop Being Shy: 9 Guaranteed Ways To Overcome Shyness</h1>
+          <p className="lead my-3 bText">Do you struggle with shyness in social situations?
+
+For a shy person, small talk can be agonizing. You become racked with fear thinking of possible ways to answer a simple question about the weather. Some shy folks would rather have a root canal than speak in front of a large crowd or approach a stranger for networking.
+
+Your default move is to keep your distance from others, which people misinterpret as being snobbish. They won’t see the fear you have of not knowing what to say if they start a conversation with you.
+
+If your shyness gets in the way of how you interact with others so that you avoid social situations, it may be that you have a condition called social anxiety. The infographic below shows some facts about social anxiety disorder.</p>
           <p className="lead mb-0"><Link to="/profile" className="btn btn-primary linkz user">Continue reading...</Link></p>
                   <hr />
-                     <img  src="https://images.pexels.com/photos/708440/pexels-photo-708440.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="card-img-right flex-auto d-none d-md-block" alt="Card cap"/>
+                     <img  src="https://www.developgoodhabits.com/wp-content/uploads/2019/01/stop-being-shy.jpg" className="card-img-right flex-auto d-none d-md-block" alt="Card cap"/>
         </div>
-    
+     </div>
 
-      <div className="row mb-2">
+      <div className="row mb-2 firstCard">
         <div className="col-md-6">
           <div className="card flex-md-row mb-4 box-shadow h-md-250">
             <div className="card-body d-flex flex-column align-items-start">
-                    <h1 className="display-4 font-italic">Title of a longer featured blog post</h1>
+                    <h1 className="display-4 font-italic">9 Ways to Stop Obsessing Over Someone—Even That “Dream” Guy or Girl</h1>
               <h3 className="mb-0">
-                <Link to="/profile" className="btn btn-primary linkz">Featured Post</Link>
+                <Link to="/login" className="btn btn-primary linkz">Featured Post</Link>
               </h3>
               <div className="mb-1 text-muted">Nov 12</div>
-              <p className="card-text mb-auto jaja">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            <p className="lead mb-0">  <Link to="/profile" className="btn btn-primary linkz continue">Continue reading...</Link> </p>
+              <p className="card-text mb-auto jaja">“The greatest power we have is the power to create reality.” – Deepak Chopra Click to Tweet Have you heard of the term “obsessive love disorder?” When we are attracted to a guy or girl, it is normal to have persistent thoughts about the one we are attracted to. It’s not surprising that we’d want to […]</p>
+  
               <hr />
             </div>
        <img  src="https://images.pexels.com/photos/2042187/pexels-photo-2042187.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="card-img-right flex-auto d-none d-md-block sec" alt="Card cap"/>
@@ -64,10 +70,7 @@ class Landing extends Component {
          <hr />
 
         <footer className="blog-footer">
-         <p>Blog Self Development built for <a href="/">YOu</a></p>
-        <p>
-           <a href="/">Back to top</a>
-        </p>
+        <p className="copyright text-muted">Copyright &copy; YouHelp 2019</p>
     </footer>
 
       </div>

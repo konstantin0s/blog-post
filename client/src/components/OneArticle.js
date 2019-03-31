@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 import './css/OneArticle.css';
 import jwt_decode from 'jwt-decode';
 import Moment from 'moment';
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub }  from '@fortawesome/free-brands-svg-icons' 
 import { faFacebook } from '@fortawesome/free-brands-svg-icons' 
 import { faTwitter } from '@fortawesome/free-brands-svg-icons' 
 
-let $this; 
+
 class OneArticle extends Component {
 
   constructor(props) {
@@ -22,26 +21,29 @@ class OneArticle extends Component {
     owner: "",
     id: "",
     first_name: "",
-    
+    errorMessage: '',
     like: false,
     likes: 0
     }
+
   }
+
+
 
   componentDidMount() {
     const { params } = this.props.match;
-    debugger
+    // debugger
     axios.get(`/articles/one/${params.id}`, {withCredentials:true})
       .then(res => {
-        debugger
+        // debugger
         let userToken = localStorage.usertoken
         const {_id} = jwt_decode(userToken)
-        debugger;
+        // debugger;
         this.setState({ article: res.data, userId:_id, first_name:res.data.owner.first_name, articleOwnerId:res.data.owner._id})
            console.log(res.data.owner.first_name);
            console.log(this.state.article);
       }).catch(err => {
-        debugger
+        // debugger
         this.setState({errorMessage:err})
         console.log(err)
       })
@@ -49,13 +51,7 @@ class OneArticle extends Component {
       axios.get(`/users/one/:id`, {withCredentials:true})  
       .then((response)=> {
         let userToken = localStorage.usertoken;
-        // const {first_name} = jwt_decode(userToken);
         this.setState({owner: response.data.id})
-          // this.setState({owner: response.data.id, first_name:response.data.owner.first_name})
-          console.log(this.state.owner);
-          debugger
-          console.log(response.data.id)
-          debugger
       })
       .catch((error)=> {
           this.setState({error})
@@ -73,14 +69,14 @@ class OneArticle extends Component {
   saveComments = (e)=> {
     e.preventDefault()
     const message = document.getElementById("comment").value;
-    debugger
+    // debugger
     axios.post('/articles/savecomment', {id: this.state.article._id, owner: this.state.article.owner, text: message}, {withCredentials:true})
     .then((res) => {
-      debugger
+      // debugger
       this.setState({ article: res.data})
         document.getElementById("comment").value = "";
     }).catch(err => {
-      debugger
+      // debugger
     })
   }
 
@@ -100,7 +96,7 @@ class OneArticle extends Component {
     if(this.state.article.comments instanceof Array){
         const comments = this.state.article.comments.reverse();
         return comments.map(function(c, i){
-          debugger
+          // debugger
           return    <div className="container showComm">
             <div className="col-md-8">
                   <div className="panel panel-default">
@@ -160,6 +156,8 @@ class OneArticle extends Component {
 }
   
   render() {
+
+
     console.log(this.state)
 
     let buttons = (this.state.userId && this.state.userId === this.state.articleOwnerId) ? <button><div>
@@ -169,7 +167,7 @@ class OneArticle extends Component {
     :
      null
      
-    debugger
+    // debugger
     return (
 
 
@@ -192,6 +190,7 @@ class OneArticle extends Component {
                  </div>
               </div>
               <p className="body-text">{this.state.article.body}</p>
+              
             {this.showCommentBox()}
              <div className="row">
             {this.showComments()}

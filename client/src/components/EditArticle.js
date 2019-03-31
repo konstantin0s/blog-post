@@ -67,16 +67,12 @@ class EditArticle extends Component {
             </h3>
           </div>
           <div className="panel-body">
-            {/* <h4><Link to={`/show/${this.state.article._id}`}><span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Your Blog</Link></h4> */}
+            <h4><Link to={`/show/${this.state.article._id}`}><span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Your Blog</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label htmlFor="title">Title:</label>
                 <input type="text" className="form-control" name="title" value={this.state.article.title} onChange={this.onChange} placeholder="Title" />
               </div>
-              {/* <div className="form-group">
-                <label for="author">Author:</label>
-                <input type="text" className="form-control" name="author" value={this.state.article.author} onChange={this.onChange} placeholder="Author" />
-              </div> */}
               <div className="form-group">
                 <label for="description">Description:</label>
                 <textarea type="text" className="form-control" name="body" value={this.state.article.body} onChange={this.onChange} placeholder="Description" />

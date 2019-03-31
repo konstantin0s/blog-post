@@ -6,8 +6,6 @@ const cors = require('cors');
 const session    = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const cookieParser = require('cookie-parser');
-const passport      = require('passport');
-const multer = require('multer');
 require("dotenv").config();
 
 
@@ -21,11 +19,7 @@ app.use(cors({
   credentials: true,
   origin: ['http://localhost:3001']
 }));
-// app.use(
-//   bodyParser.urlencoded({
-//     extended: false
-//   })
-//   )
+
   app.use(cookieParser());
 
 
@@ -54,8 +48,11 @@ mongoose
   const Users = require('./routes/Users');
   app.use('/users', Users);
 
+    
+  app.use('/articles', require('./routes/Articles'));
+  app.use('/', require('./routes/file-upload-routes'));
+
   app.use((req, res, next) => {
-    debugger
     if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
       next(); // ==> go to the next route ---
     } else {                          //    |
@@ -71,12 +68,7 @@ mongoose
   //     res.status(403).json({message: "Unauthorized"})
   //   }
   // }
-  
 
-
-  // const Articles = require('./routes/Articles');
-  app.use('/articles', require('./routes/Articles'));
-  app.use('/', require('./routes/file-upload-routes'));
 
 app.listen(3001, ()=> {
   console.log("listening")

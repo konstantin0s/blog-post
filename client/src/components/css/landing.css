@@ -8,6 +8,8 @@
   top: -120px;
 }
 
+
+
 /* .site-heading h1{
   color: white;
   font-size: 24px;
@@ -32,54 +34,54 @@
 
 .px-0 .my-3, .mb-0{
   color: black;
-    top: 80px;
+    top:290px;
    position: relative;
+}
+
+.px-0 .bText {
+  position: absolute;
+  top: 130px;
+  width: 700px;
 }
 
 .px-0 .user {
- top: -10px;
+ top: 120px;
    position: relative;
    float: left;
-   left: 340px;
+   left: 150px;
 }
 
 .px-0 hr {
-  /* float: left; */
-  left: -220px;
+  left: -140px;
   position: relative;
-  top: 70px;
+  top: 400px;
 }
 
-.card-img-right {
+.px-0 .card-img-right { /* first image*/
   position: relative;
    height: 350px;
    width: 550px;
-   left: 90px;
-   top: 66px;
+   left: 40px;
+   top: 420px;
 }
 
-.continue {
-   top: 140px;
-   position: relative;
-   float: right;
-   right: 430px;
-}
-
-.px-0 img {
+.card .card-img-right {
   position: relative;
-  top: 110px;
- left: -80px;
+   height: 350px;
+   width: 550px;
+   left: 100px;
+   top: -100px;
 }
 
 .card-body hr {
   position:relative;
-  top: -100px;
+  top: -190px;
 
 }
 
 .card-body .linkz {
   position: relative;
-  top: 100px;
+  top: -10px;
 }
 
 
@@ -100,7 +102,7 @@ top: 10px;
 
 .align-items-start .jaja {
   position: relative;
-  top: -35px;
+  top: -100px;
   color: black
 }
 
@@ -113,33 +115,69 @@ top: 10px;
     display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
  top: 600px;
   position: relative;
-  left: 500px; 
+  left: 620px; 
   bottom: 0;
   height: 30%;
   width: 40%;
 
 }
 
+.blog-footer p {
+  position: relative;
+  left: 120px;
+  font-weight: 400;
+  font-size: 24px;
+  bottom: 15px;
+}
+
+.zeroCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+ top: 0px;
+  position: relative; 
+  height: 30%;
+width: 50%;
+float: left;}
+
+.firstCard {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+top: -30px;
+position: relative; 
+width: 50%;
+height: 30%;
+/* float: right; */
+}
+
+
 .card-second {
       display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
- top: 200px;
+ top: 180px;
   position: relative; 
   height: 30%;
 }
 
-.linkz {
-  position: absolute;
-  font-weight: 200;
-  font-size: 20px;
-  top: 280px;
-  margin: 10px 0;
+.mb-1 {
+  position: relative;
+  top: 75px;
+  left: -40px;
 }
+
+.card-second a {
+  position: relative;
+  top: -230px;
+}
+
 
 .linkz:link {
   text-decoration: none;
@@ -147,12 +185,6 @@ top: 10px;
 
 .card .sec {
    position: relative;
-   top: -64px;
+   top: -150px;
+   left: 10px;
 }
-
-/* .card-second img {
-  position: relative;
-  top: 100px;
-  width: 50%;
-  height: 400px;
-} */

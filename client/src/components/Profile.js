@@ -49,7 +49,6 @@ render()
 				<div className="profile-usertitle">
 					<div className="profile-usertitle-name">
           {this.state.first_name} {this.state.last_name}
-					{/* {this.state._id} */}
 					</div>
 					<div className="profile-usertitle-job">
 						Joined at: <h4>{this.state.date}</h4>
@@ -78,9 +77,6 @@ render()
 							<i className="glyphicon glyphicon-ok"></i>
 							{this.state.email} </a>
 						</li>
-						{/* <li>
-							  <Link to={`/editProfile/${this.state._id}`} className="btn btn-success">Edit</Link>&nbsp;
-						</li> */}
 					</ul>
 				</div>
 			
