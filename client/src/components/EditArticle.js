@@ -16,7 +16,8 @@ class EditArticle extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${REACT_APP_URL}/articles/one/`+this.props.match.params.id, {withCredentials:true})
+    // axios.get(`${REACT_APP_URL}/articles/one/`+this.props.match.params.id, {withCredentials:true})
+    axios.get(`/articles/one/`+this.props.match.params.id, {withCredentials:true})
       .then(res => {
         this.setState({ article: res.data });
         console.log(this.state.article);
@@ -53,7 +54,8 @@ class EditArticle extends Component {
 
     const { title, body, author, imageUrl } = this.state.article;
 
-    axios.put(`${REACT_APP_URL}/articles/one/`+this.props.match.params.id, { title, body, author, imageUrl })
+    // axios.put(`${REACT_APP_URL}/articles/one/`+this.props.match.params.id, { title, body, author, imageUrl })
+    axios.put(`/articles/one/`+this.props.match.params.id, { title, body, author, imageUrl })
       .then((result) => {
         this.props.history.push("/show/"+this.props.match.params.id)
       });

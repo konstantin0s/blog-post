@@ -35,7 +35,8 @@ class OneArticle extends Component {
   componentDidMount() {
     const { params } = this.props.match;
     // debugger
-    axios.get(`${REACT_APP_URL}/articles/one/${params.id}`, {withCredentials:true})
+    // axios.get(`${REACT_APP_URL}/articles/one/${params.id}`, {withCredentials:true})
+    axios.get(`/articles/one/${params.id}`, {withCredentials:true})
       .then(res => {
         // debugger
         let userToken = localStorage.usertoken
@@ -52,7 +53,8 @@ class OneArticle extends Component {
 
       console.log(process.env);
 
-      axios.get(`${REACT_APP_URL}/users/one/:id`, {withCredentials:true})  
+      // axios.get(`${REACT_APP_URL}/users/one/:id`, {withCredentials:true})  
+      axios.get(`/users/one/:id`, {withCredentials:true})  
       .then((response)=> {
         let userToken = localStorage.usertoken;
         this.setState({owner: response.data.id})
@@ -64,7 +66,8 @@ class OneArticle extends Component {
 
   delete(id){
     console.log(id);
-    axios.delete(`${REACT_APP_URL}/articles/`+id, {withCredentials:true})
+    // axios.delete(`${REACT_APP_URL}/articles/`+id, {withCredentials:true})
+    axios.delete(`/articles/`+id, {withCredentials:true})
       .then((result) => {
         this.props.history.push("/profile")
       });
@@ -74,7 +77,8 @@ class OneArticle extends Component {
     e.preventDefault()
     const message = document.getElementById("comment").value;
     // debugger
-    axios.post(`${REACT_APP_URL}/articles/savecomment`, {id: this.state.article._id, owner: this.state.article.owner, text: message}, {withCredentials:true})
+    // axios.post(`${REACT_APP_URL}/articles/savecomment`, {id: this.state.article._id, owner: this.state.article.owner, text: message}, {withCredentials:true})
+    axios.post(`/articles/savecomment`, {id: this.state.article._id, owner: this.state.article.owner, text: message}, {withCredentials:true})
     .then((res) => {
       // debugger
       this.setState({ article: res.data})

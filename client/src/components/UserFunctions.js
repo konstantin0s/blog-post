@@ -4,7 +4,8 @@ require("dotenv").config();
 
 
 export const register = newUser => {
-  return axios.post(`${REACT_APP_URL}/users/register`, {
+  // return axios.post(`${REACT_APP_URL}/users/register`, {
+    return axios.post(`/users/register`, {
     first_name: newUser.first_name,
     last_name: newUser.last_name,
     email: newUser.email,
@@ -20,7 +21,8 @@ export const register = newUser => {
 }
 
 export const login = user => {
-  return axios.post(`${REACT_APP_URL}/users/login`, {
+  // return axios.post(`${REACT_APP_URL}/users/login`, {
+    return axios.post(`/users/login`, {
     email: user.email,
     password: user.password
   },  {withCredentials: true})
@@ -37,7 +39,8 @@ export const login = user => {
 }
 
 export const articles = newArticle => {
-  return axios.post(`${REACT_APP_URL}/articles`, {
+  // return axios.post(`${REACT_APP_URL}/articles`, {
+    return axios.post(`/articles`, {
     title: newArticle.title,
     // author: newArticle.author,
     body: newArticle.body,
@@ -53,7 +56,8 @@ export const articles = newArticle => {
 export const handleUpload = theFile => {
 
     console.log('file in service: ', theFile)
-  return  axios.post(`${REACT_APP_URL}/upload`, theFile,  {withCredentials: true})
+  // return  axios.post(`${REACT_APP_URL}/upload`, theFile,  {withCredentials: true})
+  return  axios.post(`/upload`, theFile,  {withCredentials: true})
       .then(res => res.data)
       .catch(err => {
         console.log(err)
@@ -62,43 +66,9 @@ export const handleUpload = theFile => {
 
 export const logOut = () => (e) => {
   e.preventDefault();
-  axios.post(`${REACT_APP_URL}/`,  {withCredentials: true});
+  // axios.post(`${REACT_APP_URL}/`,  {withCredentials: true});
+  axios.post(`/`,  {withCredentials: true});
   localStorage.removeItem('usertoken');
   store.remove('loggedIn');
   console.log('you have been logged out. boo!');
 };
-
-//  export const like = (params, credentials, articleId) => {
-//   return fetch('/articles/like/', {
-//     method: 'PUT',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//       'Authorization': 'Bearer ' + credentials.t
-//     },
-//     body: JSON.stringify({userId:params.userId, articleId: articleId})
-//   }).then((response) => {
-//     return response.json()
-//   }).catch((err) => {
-//     console.log(err)
-//   })
-// }
-
-
-
-
-// export const unlike = (params, credentials, articleId) => {
-//   return fetch('/articles/unlike/', {
-//     method: 'PUT',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//       'Authorization': 'Bearer ' + credentials.t
-//     },
-//     body: JSON.stringify({userId:params.userId, articleId: articleId})
-//   }).then((response) => {
-//     return response.json()
-//   }).catch((err) => {
-//     console.log(err)
-//   })
-// }
