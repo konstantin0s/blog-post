@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {handleUpload} from './UserFunctions';
+require("dotenv").config();
+
 
 class EditProfile extends Component {
 
@@ -13,7 +15,7 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
-    axios.get('/users/'+this.props.match.params.id)
+    axios.get(`${REACT_APP_URL}/users/`+this.props.match.params.id)
       .then(res => {
         this.setState({ user: res.data.user });
         console.log(this.state.user);
@@ -50,7 +52,7 @@ class EditProfile extends Component {
 
     const { first_name, last_name, email, password } = this.state.user;
 
-    axios.put('/users/'+this.props.match.params.id, { first_name, last_name, email, password })
+    axios.put(`${REACT_APP_URL}/users/`+this.props.match.params.id, { first_name, last_name, email, password })
       .then((result) => {
         this.props.history.push("/profile/"+this.props.match.params.id)
       });

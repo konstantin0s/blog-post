@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {handleUpload} from './UserFunctions';
+require("dotenv").config();
+
 
 class EditArticle extends Component {
 
@@ -14,7 +16,7 @@ class EditArticle extends Component {
   }
 
   componentDidMount() {
-    axios.get('/articles/one/'+this.props.match.params.id, {withCredentials:true})
+    axios.get(`${REACT_APP_URL}/articles/one/`+this.props.match.params.id, {withCredentials:true})
       .then(res => {
         this.setState({ article: res.data });
         console.log(this.state.article);
@@ -51,7 +53,7 @@ class EditArticle extends Component {
 
     const { title, body, author, imageUrl } = this.state.article;
 
-    axios.put('/articles/one/'+this.props.match.params.id, { title, body, author, imageUrl })
+    axios.put(`${REACT_APP_URL}/articles/one/`+this.props.match.params.id, { title, body, author, imageUrl })
       .then((result) => {
         this.props.history.push("/show/"+this.props.match.params.id)
       });
@@ -74,7 +76,7 @@ class EditArticle extends Component {
                 <input type="text" className="form-control" name="title" value={this.state.article.title} onChange={this.onChange} placeholder="Title" />
               </div>
               <div className="form-group">
-                <label for="description">Description:</label>
+                <label htmlFor="description">Description:</label>
                 <textarea type="text" className="form-control" name="body" value={this.state.article.body} onChange={this.onChange} placeholder="Description" />
               </div>
 

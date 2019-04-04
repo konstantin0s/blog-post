@@ -5,6 +5,8 @@ import axios from 'axios';
 import store from 'store';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPeopleCarry } from '@fortawesome/free-solid-svg-icons'
+require("dotenv").config();
+
 
 
 
@@ -17,7 +19,7 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-    axios.get('/users/'+this.props.match.params.id)
+    axios.get(`${REACT_APP_URL}/users/`+this.props.match.params.id)
       .then(res => {
         this.setState({ user: res.data.user });
         console.log(this.state.user);
@@ -27,7 +29,7 @@ class Navbar extends Component {
 
      logOut(e) {
        e.preventDefault();
-       axios.get('/');
+       axios.get(`${REACT_APP_URL}/`);
        localStorage.removeItem('usertoken');
        store.remove('loggedIn');
        console.log('you have been logged out. boo!');

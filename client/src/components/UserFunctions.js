@@ -1,8 +1,10 @@
 import axios from 'axios';
 import store from 'store';
+require("dotenv").config();
+
 
 export const register = newUser => {
-  return axios.post('users/register', {
+  return axios.post(`${REACT_APP_URL}/users/register`, {
     first_name: newUser.first_name,
     last_name: newUser.last_name,
     email: newUser.email,
@@ -18,7 +20,7 @@ export const register = newUser => {
 }
 
 export const login = user => {
-  return axios.post('/users/login', {
+  return axios.post(`${REACT_APP_URL}/users/login`, {
     email: user.email,
     password: user.password
   },  {withCredentials: true})
@@ -35,7 +37,7 @@ export const login = user => {
 }
 
 export const articles = newArticle => {
-  return axios.post('/articles', {
+  return axios.post(`${REACT_APP_URL}/articles`, {
     title: newArticle.title,
     // author: newArticle.author,
     body: newArticle.body,
@@ -51,7 +53,7 @@ export const articles = newArticle => {
 export const handleUpload = theFile => {
 
     console.log('file in service: ', theFile)
-  return  axios.post('/upload', theFile,  {withCredentials: true})
+  return  axios.post(`${REACT_APP_URL}/upload`, theFile,  {withCredentials: true})
       .then(res => res.data)
       .catch(err => {
         console.log(err)
@@ -60,7 +62,7 @@ export const handleUpload = theFile => {
 
 export const logOut = () => (e) => {
   e.preventDefault();
-  axios.post('/',  {withCredentials: true});
+  axios.post(`${REACT_APP_URL}/`,  {withCredentials: true});
   localStorage.removeItem('usertoken');
   store.remove('loggedIn');
   console.log('you have been logged out. boo!');

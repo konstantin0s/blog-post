@@ -5,6 +5,8 @@ import axios from 'axios';
 import '../components/css/Article.css';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+require("dotenv").config();
+
 
 
 class Article extends Component {
@@ -24,7 +26,7 @@ class Article extends Component {
   }
 
   componentDidMount(){
-     axios.get(`/users/`, {withCredentials:true})
+     axios.get(`${REACT_APP_URL}/users/`, {withCredentials:true})
     .then((response)=> {
         this.setState({users: response.data, userId: response.data[0]._id})
         console.log(response.data)
@@ -106,8 +108,8 @@ class Article extends Component {
                <div className="label">Assign Article To:</div>
                  <div className="select">
                  <select name="slct" className="btn btn-lg btn-primary" id="slct" onChange={this.handleChange}>
-                         {this.state.users.map((user)=> 
-                                 <option value={user._id}>{user.first_name}</option>
+                         {this.state.users.map((user, i)=> 
+                                 <option value={user._id} key={i}>{user.first_name}</option>
                              )}
                 </select>
              </div>
@@ -127,7 +129,7 @@ class Article extends Component {
                            </div>
 
 
-             <label class="custom-file-upload">
+             <label className="custom-file-upload">
              Image <FontAwesomeIcon icon={faUpload} />
              <input type="file" className="btn btn-warning addPic" onChange={(e) => this.handleFileUpload(e)} /> 
                   </label>

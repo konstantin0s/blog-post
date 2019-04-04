@@ -5,6 +5,8 @@ import './css/ShowArticles.css';
 import Moment from "moment";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+require("dotenv").config();
+
 
 function searchingFor(term) {
   return function(x) {
@@ -27,7 +29,7 @@ class ShowArticles extends Component {
   }
 
   componentDidMount() {
-    axios.get('/articles', {withCredentials:true})
+    axios.get(`${REACT_APP_URL}/articles`, {withCredentials:true})
       .then(res => {
         this.setState({ filtered: res.data });
         console.log(this.state.filtered);

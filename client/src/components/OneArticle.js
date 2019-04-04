@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub }  from '@fortawesome/free-brands-svg-icons' 
 import { faFacebook } from '@fortawesome/free-brands-svg-icons' 
 import { faTwitter } from '@fortawesome/free-brands-svg-icons' 
+require("dotenv").config();
+
 
 
 class OneArticle extends Component {
@@ -33,7 +35,7 @@ class OneArticle extends Component {
   componentDidMount() {
     const { params } = this.props.match;
     // debugger
-    axios.get(`/articles/one/${params.id}`, {withCredentials:true})
+    axios.get(`${REACT_APP_URL}/articles/one/${params.id}`, {withCredentials:true})
       .then(res => {
         // debugger
         let userToken = localStorage.usertoken
@@ -48,7 +50,9 @@ class OneArticle extends Component {
         console.log(err)
       })
 
-      axios.get(`/users/one/:id`, {withCredentials:true})  
+      console.log(process.env);
+
+      axios.get(`${REACT_APP_URL}/users/one/:id`, {withCredentials:true})  
       .then((response)=> {
         let userToken = localStorage.usertoken;
         this.setState({owner: response.data.id})
@@ -60,7 +64,7 @@ class OneArticle extends Component {
 
   delete(id){
     console.log(id);
-    axios.delete('/articles/'+id, {withCredentials:true})
+    axios.delete(`${REACT_APP_URL}/articles/`+id, {withCredentials:true})
       .then((result) => {
         this.props.history.push("/profile")
       });
@@ -70,7 +74,7 @@ class OneArticle extends Component {
     e.preventDefault()
     const message = document.getElementById("comment").value;
     // debugger
-    axios.post('/articles/savecomment', {id: this.state.article._id, owner: this.state.article.owner, text: message}, {withCredentials:true})
+    axios.post(`${REACT_APP_URL}/articles/savecomment`, {id: this.state.article._id, owner: this.state.article.owner, text: message}, {withCredentials:true})
     .then((res) => {
       // debugger
       this.setState({ article: res.data})
@@ -97,7 +101,7 @@ class OneArticle extends Component {
         const comments = this.state.article.comments.reverse();
         return comments.map(function(c, i){
           // debugger
-          return    <div className="container showComm">
+          return    <div className="container showComm" key={i}>
             <div className="col-md-8">
                   <div className="panel panel-default">
                       <div className="panel-body">
@@ -160,10 +164,11 @@ class OneArticle extends Component {
 
     console.log(this.state)
 
-    let buttons = (this.state.userId && this.state.userId === this.state.articleOwnerId) ? <button><div>
-            <Link to={`/edit/${this.state.article._id}`} class="btn btn-success">Edit</Link>&nbsp;
-            <button onClick={this.delete.bind(this, this.state.article._id)} class="btn btn-danger">Delete</button>
-        </div></button> 
+    let buttons = (this.state.userId && this.state.userId === this.state.articleOwnerId) ? <div>
+           <div>
+            <Link to={`/edit/${this.state.article._id}`} className="btn btn-success">Edit</Link>&nbsp;
+            <button onClick={this.delete.bind(this, this.state.article._id)} className="btn btn-danger">Delete</button>
+        </div></div> 
     :
      null
      

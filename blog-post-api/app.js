@@ -74,6 +74,10 @@ app.listen(3001, ()=> {
   console.log("listening")
 });
 
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
+
   //close mongodb
   process.on('SIGINT', function() {
     mongoose.connection.close(function () {

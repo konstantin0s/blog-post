@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import jwt_decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import './css/Profile.css';
-import axios from 'axios';
+
 
 
 class Profile extends Component {
@@ -63,19 +63,19 @@ render()
 				<div className="profile-usermenu">
 					<ul className="nav">
 						<li className="active">
-							<a href="/">
+						
 							<i className="glyphicon glyphicon-home"></i>
-							Overview </a>
+							Overview
 						</li>
 						<li>
-							<a href="#">
+						
 							<i className="glyphicon glyphicon-user"></i>
-							Account Settings  <Link to={`/editProfile/${this.state._id}`} className="btn btn-danger">Edit</Link>&nbsp;  </a>
+							Account Settings  <Link to={`/editProfile/${this.state._id}`} className="btn btn-danger">Edit</Link>&nbsp; 
 						</li>
 						<li>
-							<a href="/" target="_blank">
+						
 							<i className="glyphicon glyphicon-ok"></i>
-							{this.state.email} </a>
+							{this.state.email}
 						</li>
 					</ul>
 				</div>
